@@ -6,8 +6,9 @@ from .views import (
     crud_cuentas,
     crud_productos,
     resultado,
+    pedido,
     pago,
-    procesar_pago
+    retorno_pago
 )
 
 urlpatterns = [
@@ -17,6 +18,7 @@ urlpatterns = [
     path("crud_cuentas", crud_cuentas, name="crud_cuentas"),
     path("crud_productos", crud_productos, name="crud_productos"),
     path("resultado", resultado, name="resultado"),
+    path("pedido", pedido, name="pedido"),
     path("pago", pago, name="pago"),
-    path("procesar_pago", procesar_pago, name="procesar_pago"),
+    path("retorno_pago", retorno_pago, name="retorno_pago"),
 ]

@@ -112,20 +112,49 @@ def resultado(request):
     return render(request, "core/resultado.html", context)
 
 
-def pago(request):
+def pedido(request):
     context = {
 
     }
-    return render(request, "core/pago.html", context)
+    return render(request, "core/pedido.html", context)
 
 
-def procesar_pago(request):
+def pago(request):
     buy_order = request.POST["ordenCompra"]
     session_id = request.POST["idSesion"]
     amount = request.POST["monto"]
-    return_url = 'http://localhost:3000'
+    return_url = 'http://127.0.0.1:8000/retorno_pago'
 
-    transaction = Transaction(WebpayOptions(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY, IntegrationType.TEST))
+    transaction = Transaction(WebpayOptions(
+        IntegrationCommerceCodes.WEBPAY_PLUS, 
+        IntegrationApiKeys.WEBPAY, 
+        IntegrationType.TEST))
     
     response = transaction.create(buy_order, session_id, amount, return_url)
-    return JsonResponse(response)
+    token = response['token']
+    url = response['url']
+    
+    return render(request, 'core/pago.html', {'url': url, 'token': token})
+
+
+def retorno_pago(request):
+    token = request.GET.get('token_ws')
+    
+    transaction = Transaction(WebpayOptions(
+        IntegrationCommerceCodes.WEBPAY_PLUS, 
+        IntegrationApiKeys.WEBPAY, 
+        IntegrationType.TEST))
+
+    response = transaction.commit(token)
+    
+    status = response['status']
+    amount = response['amount']
+    buy_order = response['buy_order']
+    
+    context = {
+        'status': status,
+        'amount': amount,
+        'buy_order': buy_order,
+    }
+    
+    return render(request, 'core/retorno_pago.html', context)
