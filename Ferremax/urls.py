@@ -6,7 +6,8 @@ from .views import (
     crud_cuentas,
     crud_productos,
     resultado,
-    pago
+    pago,
+    procesar_pago
 )
 
 urlpatterns = [
@@ -17,4 +18,5 @@ urlpatterns = [
     path("crud_productos", crud_productos, name="crud_productos"),
     path("resultado", resultado, name="resultado"),
     path("pago", pago, name="pago"),
+    path("procesar_pago", procesar_pago, name="procesar_pago"),
 ]

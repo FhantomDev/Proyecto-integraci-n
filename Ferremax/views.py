@@ -2,8 +2,14 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import marca, categoria, proveedor, producto, cargo, empleado
 
-
+from django.conf import settings
+from django.http import JsonResponse
+from transbank.webpay.webpay_plus.transaction import Transaction, WebpayOptions, IntegrationCommerceCodes, IntegrationApiKeys
+from transbank.common.integration_type import IntegrationType
 # Create your views here.
+
+
+
 def index(request):
     return render(request, "core/index.html")
 
@@ -111,3 +117,15 @@ def pago(request):
 
     }
     return render(request, "core/pago.html", context)
+
+
+def procesar_pago(request):
+    buy_order = request.POST["ordenCompra"]
+    session_id = request.POST["idSesion"]
+    amount = request.POST["monto"]
+    return_url = 'http://localhost:3000'
+
+    transaction = Transaction(WebpayOptions(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY, IntegrationType.TEST))
+    
+    response = transaction.create(buy_order, session_id, amount, return_url)
+    return JsonResponse(response)
