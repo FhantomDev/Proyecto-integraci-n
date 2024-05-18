@@ -41,7 +41,6 @@ class producto(models.Model):
     nombreProducto = models.CharField(max_length=20, blank=False, null=False)
     stockProducto = models.IntegerField()
     descripcionProducto = models.CharField(max_length=100, blank=False, null=False)
-    stockProducto = models.IntegerField()
     precioProducto = models.IntegerField()
     imagenProducto = models.ImageField(upload_to='productos/', null=True, blank=True)
     categoria = models.ForeignKey("categoria", on_delete=models.CASCADE)
