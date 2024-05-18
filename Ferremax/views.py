@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import marca, categoria, proveedor, producto, cargo, empleado
+import requests
 
 from django.conf import settings
 from django.http import JsonResponse
@@ -158,3 +159,21 @@ def retorno_pago(request):
     }
     
     return render(request, 'core/retorno_pago.html', context)
+
+
+def productos(request):
+    url = 'http://localhost:8000/api/productos'
+    
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        datos = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error al hacer la solicitud a la API: {e}")
+        datos = None
+    
+    context = {
+        'productos': datos
+    }
+    
+    return render(request, 'core/productos.html', context)
