@@ -771,3 +771,21 @@
     width: 50%;
 }
 
+.menu-carrito {
+    position: relative;
+    background-color: #1DA1F2;
+}
+
+.menu-carrito #carrito{
+    display: none;
+}
+.menu-carrito:hover #carrito{
+    display: block;
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    min-height: 400px;
+    min-width: 300px;
+}

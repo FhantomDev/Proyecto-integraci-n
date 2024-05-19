@@ -10,17 +10,42 @@
 </head>
 <body>
   <div style="background-color: yellow; width: 50%; margin: auto">
-    <h1>Productos</h1>
-    {% for producto in productos %}
-    <div>
-        <h2>{{ producto.nombreProducto }}</h2>
-        <p><strong>ID:</strong> {{ producto.idProducto }}</p>
-        <p><strong>Stock:</strong> {{ producto.stockProducto }}</p>
-        <p><strong>Descripción:</strong> {{ producto.descripcionProducto }}</p>
-        <p><strong>Precio:</strong> {{ producto.precioProducto }}</p>
-        <p><strong>Imagen:</strong> <img class="imagenProducto" src="{{ producto.imagenProducto }}" alt="{{ producto.nombreProducto }}"></p>
+
+    <div class="menu-carrito">
+      <p>Carrito</p>
+      <div id="carrito">                               
+        <table id="lista-carrito">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <a href="#" id="vaciar-carrito">Vaciar Carrito</a>
+        <td><a href="#" id="comprar">Comprar</a></td>
+      </div>
     </div>
-{% endfor %}
+
+    <h1>Productos</h1>
+    
+      <div class="" id="lista-productos">
+        {% for producto in productos %}
+        <div class="card">
+          <div class="info-card">
+              <h4>{{producto.nombreProducto}}</h4>
+              <p><span>{{producto.precioProducto}}</span></p>
+              <img src={{producto.imagenProducto}}>
+              <a href="#" class="agregar-carrito" data-id="{{producto.idProducto}}">Agregar Al Carrito</a>
+          </div>
+      </div>
+        {% endfor %}
+      </div>
   </div>
 </body>
+<script src="static/js/carrito.js"></script>
 </html>
