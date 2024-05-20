@@ -8,7 +8,8 @@ let articulosCarrito = [];
 cargarEventListeners();
 
 function cargarEventListeners() {
-  comprar.addEventListener('click', obtenerTotal);
+  
+  comprar.addEventListener('click', obtenerDatosCompra);
 
   listaProductos.addEventListener('click', agregarProducto);
 
@@ -103,7 +104,7 @@ function carritoHTML() {
   const rowTotal = document.createElement('tr');
   rowTotal.innerHTML = `
     <td colspan="4" style="text-align: right;">Total:</td>
-    <td><span id="total-compra">$${total}</span></td>
+    <td><span id="total-compra">${total}</span></td>
   `;
   contenedorCarrito.appendChild(rowTotal);
 
@@ -120,7 +121,7 @@ function limpiarHTML() {
   }
 }
 
-function obtenerTotal() {
+function obtenerDatosCompra() {
   const total = document.querySelector("#total-compra").textContent;
-  console.log(total)
+  localStorage.setItem('total-compra', total);
 }

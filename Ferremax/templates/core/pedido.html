@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  {%load static%}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +13,19 @@
       <h1>Pago</h1>
       <p><strong>N. orden: </strong><span>7004545</span></p>
       <input type="hidden" name="ordenCompra" value="7004545">
+
       <p><strong>Sesión: </strong><span>998877</span></p>
       <input type="hidden" name="idSesion" value="998877">
-      <p><strong>Precio: </strong><span id="pesos">8500</span></p>
-      <input type="hidden" name="monto" value="8500">
+
+      <p><strong>Precio: </strong><span id="pesos"></span></p>
+
+      <input type="hidden" name="monto" id="monto" value="9000">
+
       <p><strong>En dolares: </strong><span id="dolares"></span></p>
       <button type="submit">Realizar pedido</button>
     </form>
   </div>
+  <script src="static/js/api-dolar.js"></script>
+  <script src="static/js/pedido.js"></script>
 </body>
-<script src="static/js/api-dolar.js"></script>
 </html>
