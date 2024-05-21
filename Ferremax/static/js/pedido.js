@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const total = localStorage.getItem('total-compra')
     const pesos = document.querySelector('#pesos')
+    const monto = document.querySelector('#monto')
+
     pesos.textContent = total;
+    monto.value = total;
     numerosRandom()
 })
 
