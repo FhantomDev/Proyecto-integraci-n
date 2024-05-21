@@ -18,18 +18,19 @@ background-size: cover;">
                 <div class="Conth1">
                     <h1>LOGIN</h1>
                 </div>
-                <form>
+                <form action="Login" method="POST">
+                    {% csrf_token %}
                     <div class='Cont_Datasd'>
                         <label>Nombre de usuario</label>
-                        <input type="text" required>
+                        <input type="text" name="nombreUsuario" required>
                     </div>
                     <div class='Cont_Datasd'>
                         <label>Contraseña</label>
-                        <input type="password" required>
+                        <input type="password" name="contraseña" required>
                     </div>
                     <p class="formp">¿Olvidaste tu Contraseña?<a style="color: orange;" href="">Recuperar</a></p>
+                    <button class='DesignButton' type="submit"><strong>Iniciar Sesion</strong></button>
                 </form>
-                <button class='DesignButton' type="button"><strong>Iniciar Sesion</strong></button>
                 <p class="formp">¿No posees una cuenta?<a href="{% url 'registro' %}" style="color: orange;">Crea Una cuenta</a></p>
                 <div class="DesignLine">
                     <div class="line">

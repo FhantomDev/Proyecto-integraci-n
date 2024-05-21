@@ -123,6 +123,32 @@ def pedido(request):
 
 
 def Login(request):
+    if request.method == "POST":
+        nombre_usuario = request.POST["nombreUsuario"]
+        contraseña = request.POST["contraseña"]
+
+        if nombre_usuario and contraseña:
+            try:
+                usu = usuario.objects.get(
+                    nombreUsuario=nombre_usuario, contraseña=contraseña)
+            except usuario.DoesNotExist:
+                usu = None
+
+            if usu is not None:
+                request.session["NombreUsuario"] = nombre_usuario
+                context = {
+                    "mensaje": "Inicio de sesión exitoso"
+                }
+                return render(request, "core/resultado.html", context)
+            else:
+                context = {
+                    "mensaje": "Usuario o contraseña incorrecta"
+                }
+                return render(request, "core/resultado.html", context)
+
+        context = {"mensaje": "Usuario y/o Contraseña incorrecta 2"}
+        return render(request, "core/resultado.html", context)
+
     context = {
 
     }
