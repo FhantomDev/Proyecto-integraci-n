@@ -30,7 +30,7 @@ function cargarEventListeners() {
 function agregarProducto(e) {
   e.preventDefault();
   if (e.target.classList.contains('agregar-carrito')) {
-    const productoSeleccionado = e.target.parentElement.parentElement;
+    const productoSeleccionado = e.target.parentElement;
     leerDatosProducto(productoSeleccionado);
   }
 }
@@ -47,8 +47,8 @@ function eliminarProducto(e) {
 function leerDatosProducto(producto) {
 
   const infoProducto = {
-    nombre: producto.querySelector('h4').textContent,
-    precio: producto.querySelector('span').textContent,
+    nombre: producto.querySelector('h5').textContent,
+    precio: producto.querySelector('h4').textContent,
     imagen: producto.querySelector('img').src,
     id: producto.querySelector('a').getAttribute('data-id'),
     cantidad: 1

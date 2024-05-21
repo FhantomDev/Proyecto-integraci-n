@@ -774,18 +774,81 @@
 .menu-carrito {
     position: relative;
     background-color: #1DA1F2;
+    color: white;
 }
 
-.menu-carrito #carrito{
+.menu-carrito #carrito {
     display: none;
 }
-.menu-carrito:hover #carrito{
+
+.menu-carrito:hover #carrito {
     display: block;
     position: absolute;
     top: 10px;
     z-index: 1;
-    background-color: white;
+    background-color: rgba(55, 55, 55, 0.97);
     padding: 20px;
     min-height: 400px;
     min-width: 300px;
+}
+
+.DesignCardProducts {
+    width: 90%;
+    margin-left: 5%;
+    height: auto;
+    margin-top: 10rem;
+    display: flex;
+}
+
+.ContProducts {
+    width: 15%;
+    height: 30%;
+    margin-left: 7.5%;
+
+
+
+}
+
+.DesignCardProducts .ContServiciosInfo {
+    width: 15%;
+    height: 22rem;
+    margin-left: 7.5%;
+    margin-top: 2rem;
+    border-radius: 10px;
+    background-color: rgba(187, 187, 187, 0.74);
+
+}
+
+.ContImgProducts {
+    border-radius: 10px;
+    width: 90%;
+    height: 10rem;
+    margin-top: 4rem;
+    margin-left: 5%;
+}
+
+.ContImgProducts img {
+    border-radius: 10px;
+    width: 90%;
+    height: 10rem;
+    margin-top: 2%;
+    margin-left: 5%;
+}
+
+.ContServiciosInfo h5 {
+    margin-left: 10%;
+    font-family: nonito, sans-serif;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.ContServiciosInfo h4 {
+    margin-left: 10%;
+    font-family: nonito, sans-serif;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.ContServiciosInfo a {
+    margin-left: 31%;
 }

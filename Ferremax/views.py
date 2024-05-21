@@ -121,6 +121,20 @@ def pedido(request):
     return render(request, "core/pedido.html", context)
 
 
+def Login(request):
+    context = {
+
+    }
+    return render(request, "core/Login.html", context)
+
+
+def registro(request):
+    context = {
+
+    }
+    return render(request, "core/registro.html", context)
+
+
 def pago(request):
     buy_order = request.POST["ordenCompra"]
     session_id = request.POST["idSesion"]

@@ -12,7 +12,9 @@ from .views import (
     pedido,
     pago,
     retorno_pago,
-    productos
+    productos,
+    Login,
+    registro
 )
 
 router = routers.DefaultRouter()
@@ -29,5 +31,7 @@ urlpatterns = [
     path("pago", pago, name="pago"),
     path("retorno_pago", retorno_pago, name="retorno_pago"),
     path("productos", productos, name="productos"),
+    path("Login", Login, name="Login"),
+    path("registro", registro, name="registro"),
     path('', include(router.urls))
 ]
