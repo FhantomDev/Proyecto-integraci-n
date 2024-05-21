@@ -1,6 +1,7 @@
+from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import marca, categoria, proveedor, producto, cargo, empleado
+from .models import marca, categoria, proveedor, producto, cargo, empleado, usuario
 import requests
 import json
 
@@ -129,6 +130,33 @@ def Login(request):
 
 
 def registro(request):
+    if request.method == "POST":
+        nombre_usuario = request.POST["nombreUsuario"]
+        nombre_completo = request.POST["nombreCompleto"]
+        correo = request.POST["correo"]
+        contraseña1 = request.POST["contraseña1"]
+        contraseña2 = request.POST["contraseña2"]
+
+        if contraseña1 == contraseña2:
+            usu = usuario.objects.create(
+                nombreUsuario=nombre_usuario,
+                nombreCompleto=nombre_completo,
+                correo=correo,
+                contraseña=contraseña1,
+            )
+            usu.save()
+
+            context = {
+                "mensaje": "Registro exitoso"
+            }
+            return render(request, "core/resultado.html", context)
+
+        else:
+            context = {
+                "mensaje": "Las contraseña no son iguales"
+            }
+            return render(request, "core/resultado.html", context)
+
     context = {
 
     }

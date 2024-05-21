@@ -17,29 +17,30 @@ background-size: cover;">
                 <div class="Conth1">
                     <h1>REGISTRO</h1>
                 </div>
-                <form>
+                <form action="registro" method="POST">
+                    {% csrf_token %}
                     <div class='Cont_Datasd'>
                         <label>Nombre de usuario</label>
-                        <input type="text" required>
+                        <input type="text" name="nombreUsuario" required>
                     </div>
                     <div class='Cont_Datasd'>
                         <label>Nombre completo</label>
-                        <input type="text" required>
+                        <input type="text" name="nombreCompleto" required>
                     </div>
                     <div class='Cont_Datasd'>
                         <label>Correo electrónico</label>
-                        <input type="email" required>
+                        <input type="email" name="correo" required>
                     </div>
                     <div class='Cont_Datasd'>
                         <label>Contraseña</label>
-                        <input type="password" required>
+                        <input type="password" name="contraseña1" required>
                     </div>
                     <div class='Cont_Datasd'>
                         <label>Confirmar contraseña</label>
-                        <input type="password" required>
+                        <input type="password" name="contraseña2" required>
                     </div>
+                    <button class='DesignButton' type="submit"><strong>Registrarse</strong></button>
                 </form>
-                <button class='DesignButton' type="button"><strong>Registrarse</strong></button>
                 <p class="formp">¿Ya tienes una cuenta?<a href="{% url 'Login' %}" style="color: orange;">Inicia sesión</a></p>
                 <div class="DesignLine">
                     <div class="line"></div>

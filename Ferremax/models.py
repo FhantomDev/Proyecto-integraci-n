@@ -63,3 +63,14 @@ class empleado(models.Model):
 
     def __str__(self):
         return str(self.pNombreEmpleado)+" "+str(self.pApellidoEmpleado)
+
+
+class usuario(models.Model):
+    idEmpleado = models.AutoField(primary_key=True)
+    nombreUsuario = models.CharField(max_length=20, blank=False, null=False)
+    nombreCompleto = models.CharField(max_length=20, blank=False, null=False)
+    correo = models.CharField(max_length=20, blank=False, null=False)
+    contraseña = models.CharField(max_length=20, blank=False, null=False)
+
+    def __str__(self):
+        return str(self.nombreCompleto)
