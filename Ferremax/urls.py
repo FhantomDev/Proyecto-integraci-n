@@ -18,7 +18,7 @@ from .views import (
 )
 
 router = routers.DefaultRouter()
-router.register('api/productos', ProductoViewSet, 'productos')
+router.register('api/v1/productos', ProductoViewSet, 'productos')
 
 urlpatterns = [
     path("", index, name="index"),
