@@ -11,11 +11,11 @@
     <form action="pago" method="post">
       {% csrf_token %}
       <h1>Pago</h1>
-      <p><strong>N. orden: </strong><span>7004545</span></p>
-      <input type="hidden" name="ordenCompra" value="7004545">
+      <p><strong>N. orden: </strong><span id="orden_txt"></span></p>
+      <input type="hidden" name="ordenCompra" id="orden_value" value="">
 
-      <p><strong>Sesión: </strong><span>998877</span></p>
-      <input type="hidden" name="idSesion" value="998877">
+      <p><strong>Sesión: </strong><span id="sesion_txt"></span></p>
+      <input type="hidden" name="idSesion" id="sesion_value" value="">
 
       <p><strong>Precio: </strong><span id="pesos"></span></p>
 

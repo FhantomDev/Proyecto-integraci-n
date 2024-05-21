@@ -9,7 +9,8 @@
   <div>
     <h1>Pago</h1>
     <form method="post" action="{{ url }}">
-      <input name="token_ws" value="{{ token }}" />
+      <input hidden name="token_ws" value="{{ token }}" />
+      <p>Seleccione tipo de pago</p>
       <input type="submit" value="Ir a pagar" />
     </form>
   </div>
