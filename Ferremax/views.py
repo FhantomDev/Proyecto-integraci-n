@@ -130,29 +130,26 @@ def Login(request):
         if nombre_usuario and contraseña:
             try:
                 usu = usuario.objects.get(
-                    nombreUsuario=nombre_usuario, contraseña=contraseña)
+                    nombreUsuario=nombre_usuario, contraseña=contraseña
+                )
             except usuario.DoesNotExist:
                 usu = None
 
             if usu is not None:
                 request.session["NombreUsuario"] = nombre_usuario
-                context = {
-                    "mensaje": "Inicio de sesión exitoso"
-                }
-                return render(request, "core/resultado.html", context)
+                return render(request, "core/index.html")
             else:
-                context = {
-                    "mensaje": "Usuario o contraseña incorrecta"
-                }
-                return render(request, "core/resultado.html", context)
+                return render(request, "core/Login.html")
 
-        context = {"mensaje": "Usuario y/o Contraseña incorrecta 2"}
-        return render(request, "core/resultado.html", context)
+        return render(
+            request,
+            "core/Login.html",
+        )
 
-    context = {
-
-    }
-    return render(request, "core/Login.html", context)
+    return render(
+        request,
+        "core/Login.html",
+    )
 
 
 def registro(request):
@@ -171,21 +168,15 @@ def registro(request):
                 contraseña=contraseña1,
             )
             usu.save()
-
-            context = {
-                "mensaje": "Registro exitoso"
-            }
-            return render(request, "core/resultado.html", context)
+            return render(request, "core/Login.html")
 
         else:
-            context = {
-                "mensaje": "Las contraseña no son iguales"
-            }
-            return render(request, "core/resultado.html", context)
+            return render(
+                request,
+                "core/registro.html",
+            )
 
-    context = {
-
-    }
+    context = {}
     return render(request, "core/registro.html", context)
 
 
@@ -231,7 +222,7 @@ def retorno_pago(request):
 
 
 def productos(request):
-    url = 'http://localhost:8000/api/productos'
+    url = 'http://localhost:8000/api/v1/productos'
     
     try:
         response = requests.get(url)

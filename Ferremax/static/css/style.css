@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0400;800&display=swap');
 
-.LetterNav{
+.LetterNav {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -22,44 +22,44 @@
     transition: top 0.3s ease-in-out;
 }
 
-.NavBarDesign.scrolled{
+.NavBarDesign.scrolled {
     top: -75px;
 }
 
-.NavBarDesign .logo img{
+.NavBarDesign .logo img {
     height: 60px;
     width: auto;
     transition: all 0.3s;
 }
 
-.NavBarDesign .logo img:hover{
+.NavBarDesign .logo img:hover {
     transform: scale(1.2);
 }
 
-.NavBarDesign .nav-links{
+.NavBarDesign .nav-links {
     list-style: none;
 }
 
-.NavBarDesign .nav-links li{
+.NavBarDesign .nav-links li {
     display: inline-block;
     padding: 0 20px;
 }
 
-.NavBarDesign .nav-links li:hover{
+.NavBarDesign .nav-links li:hover {
     transform: scale(1.1);
 }
 
-.NavBarDesign .nav-links a{
+.NavBarDesign .nav-links a {
     font-size: 700;
     color: #eceff1;
     text-decoration: none;
 }
 
-.NavBarDesign .nav-links li a:hover{
+.NavBarDesign .nav-links li a:hover {
     color: rgb(224, 204, 18);
 }
 
-.NavBarDesign .btn button{
+.NavBarDesign .btn button {
     font-weight: 700;
     color: #1b3039;
     padding: 9px 25px;
@@ -70,10 +70,10 @@
     transition: all 0.3s ease 0s;
 }
 
-.NavBarDesign .btn button:hover{
+.NavBarDesign .btn button:hover {
     background-color: rgb(255, 255, 255);
     color: rgb(224, 204, 18);
-    transform: scale(1,1);
+    transform: scale(1, 1);
 }
 
 .TituloHome {
@@ -82,13 +82,13 @@
     height: 240px;
     margin-top: 21rem;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
     box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.4);
     text-align: center;
     border-radius: 20px;
-  }
+}
 
-.BotonCatalogo{
+.BotonCatalogo {
     width: 40%;
     height: 2.6rem;
     background-color: rgba(215, 207, 88, 0.651);
@@ -97,7 +97,7 @@
     margin-left: 28%;
 }
 
-.CaracteristicasTaller{
+.CaracteristicasTaller {
     width: 100%;
     height: 11rem;
     background-color: #1b3039;
@@ -110,7 +110,7 @@
 
 .BloqueDosCaracteristicaTaller,
 .BloqueTresCaracteristicaTaller,
-.BloqueCuatroCaracteristicaTaller{
+.BloqueCuatroCaracteristicaTaller {
     width: 20%;
     height: 11rem;
     border-left: 1px solid rgb(224, 204, 18);
@@ -119,7 +119,7 @@
 
 
 
-.BloqueUnoCaracteristicaTaller{
+.BloqueUnoCaracteristicaTaller {
     width: 20%;
     position: relative;
     height: 11rem;
@@ -127,14 +127,14 @@
     background-color: rgb(212, 194, 37);
 }
 
-.BloqueUnoCaracteristicaTaller h4{
+.BloqueUnoCaracteristicaTaller h4 {
     margin-left: 5%;
     font-size: 1rem;
     margin-top: 10px;
     color: white;
 }
 
-.BloqueUnoCaracteristicaTaller h3{
+.BloqueUnoCaracteristicaTaller h3 {
     font-weight: bold;
     margin-top: 50px;
     margin-left: 5%;
@@ -142,7 +142,7 @@
     color: white;
 }
 
-.BloqueDosCaracteristicaTaller h2{
+.BloqueDosCaracteristicaTaller h2 {
     font-size: 3em;
     line-height: 1em;
     font-family: lato;
@@ -153,7 +153,7 @@
     position: relative;
 }
 
-.DesignLetraCaracteristas{
+.DesignLetraCaracteristas {
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -162,7 +162,7 @@
     text-align: center;
 }
 
-.BloqueTresCaracteristicaTaller h2{
+.BloqueTresCaracteristicaTaller h2 {
     font-size: 3em;
     line-height: 1em;
     font-family: lato;
@@ -173,7 +173,7 @@
     position: relative;
 }
 
-.BloqueCuatroCaracteristicaTaller h2{
+.BloqueCuatroCaracteristicaTaller h2 {
     font-size: 3em;
     line-height: 1em;
     font-family: lato;
@@ -185,28 +185,28 @@
 
 }
 
-.ConveniosMarcas{
+.ConveniosMarcas {
     width: 100%;
     height: 39rem;
     background-color: rgb(224, 204, 18);
     display: flex;
     flex-direction: row;
-    
+
 }
 
-.ContImagen{
+.ContImagen {
     width: 50%;
     height: 39rem;
     background-color: red;
-    
+
 }
 
-.ConveniosMarcas img{
+.ConveniosMarcas img {
     width: 100%;
     height: 39rem;
 }
 
-.ContInformacion{
+.ContInformacion {
     width: 50%;
     height: 39rem;
     background-color: #1b3039;
@@ -215,7 +215,7 @@
     border-top: 1px solid rgb(224, 204, 18);
 }
 
-.InformationTitle{
+.InformationTitle {
     width: 46%;
     height: 13%;
     margin-top: 2rem;
@@ -224,7 +224,7 @@
     margin-right: auto;
 }
 
-.ContTextInformation{
+.ContTextInformation {
     width: 50%;
     height: 40%;
     margin-left: auto;
@@ -237,17 +237,17 @@
     flex-direction: row;
 }
 
-.ContTextInfo1{
+.ContTextInfo1 {
     width: 35%;
     height: 100%;
     margin-left: 7%;
     margin-right: 7%;
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px ;
+    border-bottom-left-radius: 10px;
 
 }
 
-.ConTextInfo2{
+.ConTextInfo2 {
     width: 35%;
     height: 100%;
     margin-right: 7%;
@@ -256,7 +256,7 @@
     border-bottom-right-radius: 10px;
 }
 
-.ContCotizar{
+.ContCotizar {
     width: 70%;
     height: 16%;
     margin-left: auto;
@@ -265,15 +265,15 @@
     background-color: white;
 }
 
-.DesignSpan span{
+.DesignSpan span {
     font: montserrat, sans-serif;
     font-weight: 500;
     font-size: 19px;
     color: #1b3039;
 }
 
-.ContCarrusel{
-    margin-top:10rem;
+.ContCarrusel {
+    margin-top: 10rem;
     width: 50%;
     height: 340px;
     margin-left: auto;
@@ -285,64 +285,65 @@
 .ContCarrusel img {
     width: 100%;
     height: 340px;
-  }
+}
 
-  .ContCarrusel .carousel-inner {
+.ContCarrusel .carousel-inner {
     height: 340px;
 }
 
-.ContFooter{
+.ContFooter {
     width: 100%;
     height: 25rem;
     background-color: #0d171b;
     margin-top: 10rem;
 }
 
-.ContInformationFooter{
+.ContInformationFooter {
     width: 100%;
     height: 21rem;
 }
 
-.ContOrderInfoFooter{
+.ContOrderInfoFooter {
     width: 66%;
     height: 21rem;
     display: flex;
     flex-direction: row;
     margin-top: 3rem;
-    margin-left:17%;
+    margin-left: 17%;
     display: flex;
     flex-direction: row;
 }
 
-.ContInfoFooterFoto{
+.ContInfoFooterFoto {
     width: 25%;
     height: 21rem;
 }
 
-.ContInfoFooterFoto img{
+.ContInfoFooterFoto img {
     width: 70%;
     height: 20%;
     margin-top: 3rem;
     background-color: white;
-    
+
 }
-.ContInfoFooterContacto{
+
+.ContInfoFooterContacto {
     width: 25%;
     height: 21rem;
 }
 
-.Designh3{
+.Designh3 {
     font-size: 25px;
     font-family: Montserrat, sans-serif;
     color: white;
     text-decoration: none;
 }
 
-.Designh3:hover{
+.Designh3:hover {
     color: rgb(224, 204, 18);
 }
 
-.DesignCorreoFooter{
+.DesignCorreoFooter {
     display: flex;
     flex-direction: row;
 }
@@ -356,7 +357,7 @@
     margin-top: 3%;
 }
 
-.DesignTextCellphone{
+.DesignTextCellphone {
     font-size: 14px;
     font-family: Montserrat, sans-serif;
     color: white;
@@ -364,15 +365,16 @@
     margin-left: 3%;
     margin-top: 1.5%;
 }
-.DesignTextCorreo:hover{
+
+.DesignTextCorreo:hover {
     color: rgb(224, 204, 18);
 }
 
-.DesignTextCellphone:hover{
+.DesignTextCellphone:hover {
     color: rgb(224, 204, 18);
 }
 
-.DesignTextTelephone{
+.DesignTextTelephone {
     font-size: 14px;
     font-family: Montserrat, sans-serif;
     color: white;
@@ -381,26 +383,26 @@
     margin-top: 1.5%;
 }
 
-.DesignCellphoneFooter{
+.DesignCellphoneFooter {
     display: flex;
     flex-direction: row;
 }
 
-.DesignTelephoneFooter{
+.DesignTelephoneFooter {
     display: flex;
     flex-direction: row;
 }
 
-.DesignTextTelephone:hover{
+.DesignTextTelephone:hover {
     color: rgb(224, 204, 18);
 }
 
-.DesignStreetFooter{
+.DesignStreetFooter {
     display: flex;
     flex-direction: row;
 }
 
-.DesignTextLocation{
+.DesignTextLocation {
     font-size: 14px;
     font-family: Montserrat, sans-serif;
     color: white;
@@ -409,51 +411,51 @@
     margin-top: 3%;
 }
 
-.DesignTextLocation:hover{
+.DesignTextLocation:hover {
     color: rgb(224, 204, 18);
 }
 
-.ContInfoFooterInteres{
+.ContInfoFooterInteres {
     width: 25%;
     height: 21rem;
 }
 
-.DesignTextInteres{
+.DesignTextInteres {
     font-size: 14px;
     font-family: Montserrat, sans-serif;
     color: white;
     text-decoration: none;
 }
 
-.DesignTextInteres:hover{
+.DesignTextInteres:hover {
     color: rgb(224, 204, 18);
 }
 
-.DesignInteresFooter{
+.DesignInteresFooter {
     display: flex;
     flex-direction: row;
 }
 
-.ContInfoFooterhorarios{
+.ContInfoFooterhorarios {
     width: 25%;
     height: 21rem;
 }
 
-.DesignTextHorario{
+.DesignTextHorario {
     font-size: 14px;
     font-family: Montserrat, sans-serif;
     color: white;
     text-decoration: none;
 }
 
-.ContDataFooter{
+.ContDataFooter {
     width: 100%;
     height: 4rem;
     background-color: #060a0b;
     border-top: 1px solid white;
 }
 
-.ContDataFooter h6{
+.ContDataFooter h6 {
     font-family: Montserrat, sans-serif;
     font-size: 12px;
     margin-top: 2rem;
@@ -465,7 +467,7 @@
 
 /*Elementos para Template Nosotros*/
 
-.ContTitleNosotros{
+.ContTitleNosotros {
     margin-top: 4%;
     width: 100%;
     height: 8rem;
@@ -476,7 +478,7 @@
 }
 
 
-.ContInfoNosotros{
+.ContInfoNosotros {
     width: 100%;
     height: 39rem;
     background-color: rgba(186, 186, 186, 0.456);
@@ -484,7 +486,7 @@
     flex-direction: row;
 }
 
-.ImgContainer img{
+.ImgContainer img {
     position: absolute;
     top: 0;
     left: 0;
@@ -496,7 +498,7 @@
     border-radius: 10px;
 }
 
-.ContInfoText{
+.ContInfoText {
     background-color: #1b3039;
     width: 34%;
     height: 35rem;
@@ -506,14 +508,14 @@
     box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.4);
 }
 
-.ContInfoText span{
+.ContInfoText span {
     display: block;
     text-align: left;
     color: rgb(224, 204, 18);
-    position:relative;
+    position: relative;
 }
 
-.ContTextInfoNosotros{
+.ContTextInfoNosotros {
     width: 20%;
     height: 28.5rem;
     position: absolute;
@@ -521,7 +523,7 @@
     margin-top: 3.25rem;
 }
 
-.ContTitleServicios{
+.ContTitleServicios {
     width: 100%;
     height: 5rem;
     background-color: rgba(0, 0, 0, 0.981);
@@ -530,7 +532,7 @@
     align-items: center;
 }
 
-.ContServiciosInfo{
+.ContServiciosInfo {
     width: 80%;
     height: 60rem;
     margin-left: 10%;
@@ -539,7 +541,7 @@
     background-color: rgba(31, 65, 89, 0.636);
 }
 
-.ServiciosCont1{
+.ServiciosCont1 {
     width: 100%;
     height: 30rem;
     display: flex;
@@ -547,19 +549,19 @@
 
 }
 
-.ServiciosCont2{
+.ServiciosCont2 {
     width: 100%;
     height: 30rem;
     display: flex;
     flex-direction: row;
 }
 
-.BlockServ{
+.BlockServ {
     width: 25%;
     height: 30rem;
 }
 
-.DesignCard{
+.DesignCard {
     width: 80%;
     height: 25rem;
     margin-top: 2.5rem;
@@ -570,7 +572,7 @@
     transition: all 0.6s;
 }
 
-.ContImg{
+.ContImg {
     width: 80%;
     height: 14rem;
     background-color: black;
@@ -578,19 +580,19 @@
     margin-left: 10%;
 }
 
-.ContImg img{
+.ContImg img {
     width: 100%;
     height: 14rem;
 }
 
-.ServText{
+.ServText {
     width: 80%;
     height: 7rem;
     margin-top: 2rem;
     margin-left: 10%;
 }
 
-.ServText h2{
+.ServText h2 {
     font-size: 30px;
     font-family: Montserrat, sans-serif;
     font-weight: 800;
@@ -600,14 +602,14 @@
     color: #1b3039;
 }
 
-.DesignCard:hover{
+.DesignCard:hover {
     transform: scale(1.2);
 }
 
 
 /*Elementos para Template Contacto*/
 
-.ContFormularioContacto{
+.ContFormularioContacto {
     width: 60%;
     height: 40rem;
     margin-top: 12rem;
@@ -618,7 +620,7 @@
     flex-direction: row;
 }
 
-.ContFormTextInfo{
+.ContFormTextInfo {
     width: 50%;
     height: 40rem;
     background-color: #1b3039;
@@ -634,8 +636,9 @@
     position: relative;
     width: 100%;
     margin-bottom: 1rem;
-  }
-  .my-input {
+}
+
+.my-input {
     width: 40%;
     background-color: #1b3039;
     margin-left: 30%;
@@ -644,8 +647,9 @@
     border: 2px solid #000000;
     padding: 0.5rem;
     border-radius: 5px;
-  }
-  .my-label {
+}
+
+.my-label {
     position: absolute;
     margin-left: 30%;
     top: 0;
@@ -654,17 +658,19 @@
     padding: 0.5rem;
     color: #ffffff;
     transition: top 0.3s ease-in-out, font-size 0.3s ease-in-out;
-  }
-  .my-input:focus + .my-label {
+}
+
+.my-input:focus+.my-label {
     top: -1.5rem;
     font-size: 0.8rem;
-  }
-  .message-box {
+}
+
+.message-box {
     width: 100%;
     padding: 1
-  }
-  
-.ContFormParrafo{
+}
+
+.ContFormParrafo {
     width: 60%;
     height: 5rem;
     margin-left: 20%;
@@ -675,8 +681,9 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-  }
-  .comment-input {
+}
+
+.comment-input {
     width: 100%;
     height: 10rem;
     padding: 1rem;
@@ -684,8 +691,9 @@
     border: 1px solid #000000;
     border-radius: 5px;
     resize: none;
-  }
-  .comment-button {
+}
+
+.comment-button {
     background-color: #1b3039;
     color: white;
     padding: 0.5rem 1rem;
@@ -694,12 +702,13 @@
     margin-left: 41%;
     cursor: pointer;
     text-align: center;
-  }
+}
 
-.ContFormComplete{
+.ContFormComplete {
     width: 50%;
     height: 40rem;
-    background-color: rgb(217, 199, 44);;
+    background-color: rgb(217, 199, 44);
+    ;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top: 3px solid black;
@@ -707,7 +716,7 @@
     border-bottom: 3px solid black;
 }
 
-.BlockFacebook{
+.BlockFacebook {
     width: 50%;
     height: 3rem;
     margin-left: 20%;
@@ -719,20 +728,20 @@
 
 
 
-.BlockImgRedes{
-    width:20%;
+.BlockImgRedes {
+    width: 20%;
     height: 3rem;
     background-color: white;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
-.BlockImgRedes img{
+.BlockImgRedes img {
     width: 100%;
     height: 3rem;
 }
 
-.BlockTwitter{
+.BlockTwitter {
     width: 50%;
     height: 3rem;
     margin-left: 20%;
@@ -746,20 +755,18 @@
     width: 50%;
     height: 3rem;
     margin-left: 20%;
-    background: linear-gradient(
-      45deg,
-      #f09433 0%,
-      #e6685c 25%,
-      #dc2777 50%,
-      #be18ab 75%,
-      #9c27b0 100%
-    );
+    background: linear-gradient(45deg,
+            #f09433 0%,
+            #e6685c 25%,
+            #dc2777 50%,
+            #be18ab 75%,
+            #9c27b0 100%);
     border-radius: 10px;
     display: flex;
     flex-direction: row;
-  }
+}
 
-.DesignTextSocialWebs{
+.DesignTextSocialWebs {
     color: white;
     display: flex;
     align-items: center;
@@ -851,4 +858,25 @@
 
 .ContServiciosInfo a {
     margin-left: 31%;
+}
+
+/*Elementos para pedido*/
+
+.ContPedido {
+    width: 50%;
+    height: 60%;
+    margin-left: 25%;
+    border-radius: 15px;
+    margin-top: 10%;
+
+}
+
+.DesignContPedido .ContServiciosInfo {
+    width: 15%;
+    height: 22rem;
+    margin-left: 7.5%;
+    margin-top: 2rem;
+    border-radius: 10px;
+    background-color: white;
+
 }
