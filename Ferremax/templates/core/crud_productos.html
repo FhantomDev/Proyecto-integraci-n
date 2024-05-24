@@ -81,31 +81,29 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Id_Producto</th>
-                                        <th>Nombre_Producto</th>
-                                        <th>stock_Producto</th>
-                                        <th>descripcion_Producto</th>
-                                        <th>Precio_Producto</th>
-                                        <th>Categoria_Producto</th>
-                                        <th>Marca_Producto</th>
-                                        <th>Proveedor_Producto</th>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>stock</th>
+                                        <th>Descripción</th>
+                                        <th>Precio</th>
+                                        <th>Categoria</th>
+                                        <th>Marca</th>
+                                        <th>Proveedor</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for p in productos %}
                                     <tr>
-                                        <td>{{forloop.counter}}</td>
-                                        <td>{{p.Id_Producto}}</td>
-                                        <td>{{p.Nombre_Producto}}</td>
-                                        <td>{{p.stock_Producto}}</td>
-                                        <td>{{p.descripcion_Producto}}</td>
-                                        <td>{{p.Precio_Producto}}</td>
-                                        <td>{{p.Categoria_Producto}}</td>
-                                        <td>{{p.Marca_Producto}}</td>
-                                        <td>{{p.Proveedor_Producto}}</td>
-                                        <td><a href="/edicionProducto/{{p.Id_Producto}}" class="btn btn-info">Editar</a></td>
-                                        <td><a href="/eliminarProducto/{{p.Id_Producto}}" class="btn btn-danger" id="btneliminar">Eliminar</a></td>
+                                        <td>{{p.idProducto}}</td>
+                                        <td>{{p.nombreProducto}}</td>
+                                        <td>{{p.stockProducto}}</td>
+                                        <td>{{p.descripcionProducto}}</td>
+                                        <td>{{p.precioProducto}}</td>
+                                        <td>{{p.categoria}}</td>
+                                        <td>{{p.marca}}</td>
+                                        <td>{{p.proveedor}}</td>
+                                        <td><a href="/edicionProducto/{{p.idProducto}}" class="btn btn-info">Editar</a></td>
+                                        <td><a href="/eliminarProducto/{{p.idProducto}}" class="btn btn-danger" id="btneliminar">Eliminar</a></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

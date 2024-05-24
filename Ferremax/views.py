@@ -67,11 +67,13 @@ def crud_productos(request):
         mar = marca.objects.all()
         cat = categoria.objects.all()
         pro = proveedor.objects.all()
+        produ = producto.objects.all()
 
         context = {
             "marca": mar,
             "categoria": cat,
             "proveedor": pro,
+            "productos": produ
         }
         return render(request, "core/crud_productos.html", context)
 
@@ -237,3 +239,10 @@ def productos(request):
     }
     
     return render(request, 'core/productos.html', context)
+
+
+def eliminarProducto(request, pk):
+    prod = producto.objects.get(idProducto = pk)
+    prod.delete()
+
+    return redirect("crud_productos")
