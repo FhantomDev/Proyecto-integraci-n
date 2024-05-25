@@ -246,3 +246,48 @@ def eliminarProducto(request, pk):
     prod.delete()
 
     return redirect("crud_productos")
+
+
+def edicion_producto(request, pk):
+    if request.method != "POST":
+        
+        prod = producto.objects.get(idProducto = pk)
+        mar = marca.objects.all()
+        cat = categoria.objects.all()
+        prov = proveedor.objects.all()
+        context = {
+            'producto': prod,
+            'marca': mar,
+            'categoria': cat,
+            'proveedor': prov
+        } 
+        return render(request, 'core/edicion_producto.html', context)
+    else:
+        id_producto = request.POST["id_Producto"]
+        nombre_producto = request.POST["txtNombre_Producto"]
+        sotck_producto = request.POST["txtstock_Producto"]
+        descripcion_producto = request.POST["txtdescripcion_Producto"]
+        precio_producto = request.POST["txtPrecio_Producto"]
+        id_marca = request.POST["marca"]
+        id_categoria = request.POST["categoria"]
+        id_proveedor = request.POST["proveedor"]
+
+        objMarca = marca.objects.get(idMarca=id_marca)
+        objCategoria = categoria.objects.get(idCategoria=id_categoria)
+        objProveedor = proveedor.objects.get(idProveedor=id_proveedor)
+
+        prod = producto.objects.get(idProducto = id_producto)
+    
+        prod.nombreProducto=nombre_producto
+        prod.stockProducto=sotck_producto
+        prod.descripcionProducto=descripcion_producto
+        prod.precioProducto=precio_producto
+        if 'imagen_producto' in request.FILES:
+            prod.imagenProducto = request.FILES["imagen_producto"]
+        prod.categoria=objCategoria
+        prod.marca=objMarca
+        prod.proveedor=objProveedor
+
+        prod.save()
+
+        return redirect("crud_productos")

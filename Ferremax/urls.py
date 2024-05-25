@@ -15,7 +15,8 @@ from .views import (
     productos,
     Login,
     registro,
-    eliminarProducto
+    eliminarProducto,
+    edicion_producto
 )
 
 router = routers.DefaultRouter()
@@ -34,6 +35,7 @@ urlpatterns = [
     path("productos", productos, name="productos"),
     path("Login", Login, name="Login"),
     path("registro", registro, name="registro"),
+    path("edicion_producto/<str:pk>", edicion_producto, name="edicion_producto"),
     path("eliminarProducto/<str:pk>", eliminarProducto, name="eliminarProducto"),
     path('', include(router.urls))
 ]
