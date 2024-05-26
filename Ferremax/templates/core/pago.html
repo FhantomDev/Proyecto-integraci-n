@@ -32,11 +32,13 @@ background-size: cover;">
     <div class="ContDesignPago">
       <div class="ContServiciosInfo" style="width:30%; height:20rem; background-color: #1b3039; margin-left:35%">
         <h1 style="text-align:center; margin-top:10%; font-family: nonito, sans-serif; font-weight:600; color:white;">Pago</h1>
+        
         <form method="post" action="{{ url }}">
           <input hidden name="token_ws" value="{{ token }}" />
           <p style="text-align:center; margin-top:10%; font-family:nonito, sans-serif; font-weight:600; color:white;">Seleccione tipo de pago</p>
           <input style="margin-top:5%; width:40%; margin-left:30%; height:30%; border-radius:10px; background-color: #199bd3; border: 2px solid black;" type="submit" value="Ir a pagar" />
         </form>
+        
       </div>
     </div>
   </main>
@@ -82,22 +84,22 @@ background-size: cover;">
             <br>
             <a href="{% url "index" %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
-                <h4 class="DesignTextInteres">>  Home</h4>
+                <h4 class="DesignTextInteres">  Home</h4>
               </span>
             </a>
             <a href="{% url "Nosotros" %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
-                <h4 class="DesignTextInteres">>  Nosotros</h4>
+                <h4 class="DesignTextInteres">  Nosotros</h4>
               </span>
             </a>
             <a class="DesignInteresFooter" style="text-decoration: none;">
               <span>
-                <h4 class="DesignTextInteres">>  Catalogo</h4>
+                <h4 class="DesignTextInteres">  Catalogo</h4>
               </span>
             </a>
             <a href="{% url "Contacto" %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
-                <h4 class="DesignTextInteres">>  Contacto</h4>
+                <h4 class="DesignTextInteres">  Contacto</h4>
               </span>
             </a>
           </div>

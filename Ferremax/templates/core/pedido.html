@@ -68,11 +68,13 @@ background-size: cover;">
                 <p style="color:black; "><strong>Sesión: </strong><span id="sesion_txt"></span></p>
                 <input type="hidden" name="idSesion" id="sesion_value" value="">
         
-                <p style="color:black; "><strong>Precio: </strong><span id="pesos"></span></p>
+                <p style="color:black; "><strong>Total: </strong><span id="pesos"></span></p>
         
-                <input type="hidden" name="monto" id="monto" value="9000">
-        
-                <p style="color:black; "><strong>En dolares: </strong><span id="dolares"></span></p>
+                <input type="hidden" name="monto" id="monto">
+                <p hidden id="dolar">{{dolar}}</p>
+                <p hidden id="euro">{{euro}}</p>
+                <p style="color:black; "><strong>Valor en dolares: </strong><span id="valor-dolares"></span></p>
+                <p style="color:black; "><strong>Valor en euro: </strong><span id="valor-euro"></span></p>
               </div>
             </div>
             <button style="margin-top:5%; width:40%; margin-left:30%; height:30%; border-radius:10px; background-color: #199bd3; border: 2px solid black;" type="submit" >Realizar pedido</button>
@@ -159,7 +161,6 @@ background-size: cover;">
       </div>
     </div>
   </footer>
-  <script src="static/js/api-dolar.js"></script>
   <script src="static/js/pedido.js"></script>
 </body>
 </html>

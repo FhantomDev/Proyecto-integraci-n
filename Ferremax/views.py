@@ -2,6 +2,7 @@ from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import marca, categoria, proveedor, producto, cargo, empleado, usuario
+from .apiMonedas import dolar, euro
 import requests
 import json
 
@@ -118,8 +119,11 @@ def resultado(request):
 
 
 def pedido(request):
+    valorDolar = dolar()
+    valorEuro = euro()
     context = {
-
+        'dolar' : valorDolar,
+        'euro' : valorEuro
     }
     return render(request, "core/pedido.html", context)
 
