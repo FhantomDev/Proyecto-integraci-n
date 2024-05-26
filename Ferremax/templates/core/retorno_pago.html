@@ -26,8 +26,11 @@ background-size: cover;">
           <li><a href="{% url 'Contacto' %}">Contacto</a></li>
         </ul>
       </nav>
+      {% if request.session.nombreUsuario %}
+      <h2>Bienvenido {{request.session.nombreUsuario}}</h2>
+      {% else %}
       <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
-    </div>
+      {% endif %}  </div>    </div>
   </header>
   <main>
     <div class="ContDesignRetornoPago">

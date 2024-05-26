@@ -9,8 +9,11 @@ cargarEventListeners();
 
 function cargarEventListeners() {
   
-  comprar.addEventListener('click', obtenerDatosCompra);
-
+  comprar.addEventListener('click', () => {  
+    obtenerDatosCompra();
+    articulosCarrito = [];
+    sincronizarStorage();
+  })
   listaProductos.addEventListener('click', agregarProducto);
 
   carrito.addEventListener('click', eliminarProducto);
@@ -24,6 +27,8 @@ function cargarEventListeners() {
     articulosCarrito = [];
     limpiarHTML();
     sincronizarStorage();
+    const total = 0
+    localStorage.setItem('total-compra', total);
   });
 }
 
