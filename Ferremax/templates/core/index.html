@@ -25,8 +25,11 @@ background-size: cover;">
           <li><a href="{% url 'Contacto' %}">Contacto</a></li>
         </ul>
       </nav>
-      <a href="" class="btn"><Button>Carrito</Button></a>
-    </div>
+      {% if request.session.nombreUsuario %}
+      <h2>Bienvenido {{request.session.nombreUsuario}}</h2>
+      {% else %}
+      <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
+      {% endif %}    </div>
     <div class="TituloHome" style="text-align: center; color: white;">
       <p style="font-weight: 400px; 
                 font-size: 2rem;

@@ -48,8 +48,11 @@ background-size: cover;">
         </ul>
       </ul>
     </nav>
-    <a href="{% url 'Login' %}" class="btn"><button>Iniciar sesion</button></a>
-  </div>
+    {% if request.session.nombreUsuario %}
+    <h2>Bienvenido {{request.session.nombreUsuario}}</h2>
+    {% else %}
+    <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
+    {% endif %}  </div>
 </header>
 
   <main>
