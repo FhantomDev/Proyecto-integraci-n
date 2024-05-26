@@ -31,9 +31,33 @@ background-size: cover;">
   <main>
     <div class='DesignContPedido'>
       <div style="background-color: #1b3039; width:25%; margin-right:0; margin-left:37%; height:30rem; margin-top: 13%;" class="ContServiciosInfo">
+        <form action="pago" method="post">
+          {% csrf_token %}
+        {% if request.session.nombreUsuario %}
+          <div class="datosPedido">
+            <h2>Bienvenido {{request.session.nombreUsuario}}</h2>
+            <label for="direccion">Ingrese la dirección de despacho</label>
+            <br>
+            <input type="text" name="direccion" id="direccion" required>
+          </div>
+        {% else  %}
+          <div class="datosPedido">
+            <h2>Bienvenido Visitante</h2>
+            <label for="nombre">Ingrese su nombre</label>
+            <br>
+            <input type="text" name="nombre" id="nombre" required>
+            <br>
+            <label for="celular">Ingrese su numero de contacto</label>
+            <br>
+            <input type="number" name="celular" id="celular" required>
+            <br>
+            <label for="direccion">Ingrese la dirección de despacho</label>
+            <br>
+            <input type="text" name="direccion" id="direccion" required>
+          </div>
+        {% endif %}
         <div>
-          <form action="pago" method="post">
-            {% csrf_token %}
+
             <br>
             <div class="DesignText" style="font-family: nonito, sans-serif, font-weight:600;">
               <h1 style="color:black;text-align:center; color:white;">Pago</h1>

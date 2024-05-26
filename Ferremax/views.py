@@ -138,7 +138,7 @@ def Login(request):
                 usu = None
 
             if usu is not None:
-                request.session["NombreUsuario"] = nombre_usuario
+                request.session["nombreUsuario"] = nombre_usuario
                 return render(request, "core/index.html")
             else:
                 return render(request, "core/Login.html")
