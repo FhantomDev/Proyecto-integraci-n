@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "Ferremax",
-    "rest_framework"
+    "rest_framework",
+    "django_filters"
 ]
 
 MIDDLEWARE = [

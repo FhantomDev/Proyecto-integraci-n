@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from .api import ProductoViewSet
+from .api import ProductoListView, ProductoDetailView, ProductoUpdateView
 
 from .views import (
     index,
@@ -19,8 +19,8 @@ from .views import (
     edicion_producto
 )
 
-router = routers.DefaultRouter()
-router.register('api/v1/productos', ProductoViewSet, 'productos')
+""" router = routers.DefaultRouter()
+router.register('api/v1/productos', ProductoListView, 'productos') """
 
 urlpatterns = [
     path("", index, name="index"),
@@ -37,5 +37,7 @@ urlpatterns = [
     path("registro", registro, name="registro"),
     path("edicion_producto/<str:pk>", edicion_producto, name="edicion_producto"),
     path("eliminarProducto/<str:pk>", eliminarProducto, name="eliminarProducto"),
-    path('', include(router.urls))
+    path('api/v1/productos/', ProductoListView.as_view(), name='apiProductos'),
+    path('api/v1/productos/<int:pk>/', ProductoDetailView.as_view(), name='apiProductosID'),
+    path('api/v1/productos/<int:pk>/update/', ProductoUpdateView.as_view(), name='apiProductosUpdate'),
 ]
