@@ -13,6 +13,25 @@
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover;">
+<style>
+  button{
+    margin-left:0;
+    margin-right:0;
+    height:10%;
+    width:100%;
+    border: 2px solid black;
+    background-color: yellow;
+    color: #1b3039;
+    font-family: arial, sans serif;
+    font-weight:600;
+    border-radius:10px;
+  }
+
+  button:hover{
+    background-color:orange;
+    color:white;
+  }
+</style>
 <header>
   <div class="NavBarDesign LetterNav">
     <div class="logo">
@@ -49,7 +68,7 @@ background-size: cover;">
       </ul>
     </nav>
     {% if request.session.nombreUsuario %}
-    <h2>Bienvenido {{request.session.nombreUsuario}}</h2>
+    <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
     {% else %}
     <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
     {% endif %}  </div>
@@ -78,7 +97,7 @@ background-size: cover;">
             </div>
             <h5>{{ producto.nombreProducto }}</h5>
             <h4>{{ producto.precioProducto }}</h4>
-            <a href="#" class="btn btn-primary agregar-carrito" data-id="{{ producto.idProducto }}">Agregar Al Carrito</a>
+            <button href="#" class="agregar-carrito" data-id="{{ producto.idProducto }}">Agregar al Carrito</button>
         </div>
         {% endfor %}
       </div>

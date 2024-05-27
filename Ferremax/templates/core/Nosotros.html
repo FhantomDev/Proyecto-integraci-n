@@ -24,18 +24,18 @@
     <header>
       <div class="NavBarDesign LetterNav">
         <div class="logo">
-          <img src="img/ferremaxLogo.png" />
+          <img src="{% static "img/ferremaxLogo.png" %}">
         </div>
         <nav>
           <ul class="nav-links">
             <li><a href="{% url 'index' %}">Inicio</a></li>
             <li><a href="{% url 'Nosotros' %}">Nosotros</a></li>
-            <li><a href="">Productos</a></li>
+            <li><a href="{% url 'productos' %}">Productos</a></li>
             <li><a href="{% url 'Contacto' %}">Contacto</a></li>
           </ul>
         </nav>
         {% if request.session.nombreUsuario %}
-        <h2>Bienvenido {{request.session.nombreUsuario}}</h2>
+        <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
         {% else %}
         <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
         {% endif %}      </div>
@@ -195,103 +195,64 @@
               <img src="{% static "img/ferremaxLogo.png" %}">
             </div>
             <div class="ContInfoFooterContacto">
-              <h3 style="margin-top: 3rem">
-                <a href="{% url 'Contacto' %}" class="Designh3">Contacto</a>
-              </h3>
-              <br />
-              <a
-                href=""
-                class="DesignCorreoFooter"
-                style="text-decoration: none"
-              >
+              <h3 style="margin-top: 3rem;"><a href="{%url 'Contacto' %}"  Class="Designh3">Contacto</a></h3>
+              <br>
+              <a href="" class="DesignCorreoFooter" style="text-decoration: none;">
                 <span>
-                  <img src="{% static "img/email-1573-svgrepo-com.svg" %}"
-                  width="20px" style="margin-left: 15%" />
+                  <img src="{% static "img/email-1573-svgrepo-com.svg" %}" width="20px" style="margin-left: 15%;">
                 </span>
                 <span>
                   <h4 class="DesignTextCorreo">Contacto@Ferremax.cl"</h4>
                 </span>
               </a>
-              <a
-                href=""
-                class="DesignCellphoneFooter"
-                style="text-decoration: none"
-              >
+              <a href="" class="DesignCellphoneFooter" style="text-decoration: none;">
                 <span>
-                  <img src="{% static "img/cellphone-svgrepo-com.svg" %}"
-                  width="30px" />
+                  <img src="{% static "img/cellphone-svgrepo-com.svg" %}" width="30px">
                 </span>
                 <h4 class="DesignTextCellphone">+56 9 8336 5361</h4>
               </a>
-              <a
-                href=""
-                class="DesignTelephoneFooter"
-                style="text-decoration: none"
-              >
+              <a href="" class="DesignTelephoneFooter" style="text-decoration: none;">
                 <span>
-                  <img src="{% static "img/telephone-svgrepo-com.svg" %}"
-                  width="20px" />
+                  <img src="{% static "img/telephone-svgrepo-com.svg" %}" width="20px">
                 </span>
                 <h4 class="DesignTextTelephone">+56 9 8336 5361</h4>
               </a>
-              <a
-                href=""
-                class="DesignStreetFooter"
-                style="text-decoration: none"
-              >
+              <a href="" class="DesignStreetFooter" style="text-decoration: none;">
                 <span>
-                  <img src="{% static "img/location-pin-svgrepo-com.svg" %}"
-                  width="30px" />
+                  <img src="{% static "img/location-pin-svgrepo-com.svg"%}" width="30px">
                 </span>
                 <h4 class="DesignTextLocation">Ismael Tocornal 8063</h4>
               </a>
             </div>
             <div class="ContInfoFooterInteres">
-              <h3 style="margin-top: 3rem">
-                <a href="" class="Designh3">Links de Interes</a>
-              </h3>
-              <br />
-              <a
-                href="{% url 'index' %}"
-                class="DesignInteresFooter"
-                style="text-decoration: none"
-              >
+              <h3 style="margin-top: 3rem;"><a href="" class="Designh3">Links de Interes</a></h3>
+              <br>
+              <a href="{% url "index" %}" class="DesignInteresFooter" style="text-decoration: none;">
                 <span>
-                  <h4 class="DesignTextInteres">> Home</h4>
+                  <h4 class="DesignTextInteres">>  Home</h4>
                 </span>
               </a>
-              <a
-                href="{% url 'Nosotros' %}"
-                class="DesignInteresFooter"
-                style="text-decoration: none"
-              >
+              <a href="{% url "Nosotros" %}" class="DesignInteresFooter" style="text-decoration: none;">
                 <span>
-                  <h4 class="DesignTextInteres">> Nosotros</h4>
+                  <h4 class="DesignTextInteres">>  Nosotros</h4>
                 </span>
               </a>
-              <a class="DesignInteresFooter" style="text-decoration: none">
+              <a href="{% url "productos" %}" class="DesignInteresFooter" style="text-decoration: none;">
                 <span>
-                  <h4 class="DesignTextInteres">> Catalogo</h4>
+                  <h4 class="DesignTextInteres">>  Productos</h4>
                 </span>
               </a>
-
-              <a
-                href="{% url 'Contacto'%}"
-                class="DesignInteresFooter"
-                style="text-decoration: none"
-              >
+              <a href="{% url "Contacto" %}" class="DesignInteresFooter" style="text-decoration: none;">
                 <span>
-                  <h4 class="DesignTextInteres">> Contacto</h4>
+                  <h4 class="DesignTextInteres">>  Contacto</h4>
                 </span>
               </a>
             </div>
             <div class="ContInfoFooterhorarios">
-              <h3 style="margin-top: 3rem">
-                <a href="" class="Designh3">Horarios de atencion</a>
-              </h3>
-              <br />
+              <h3 style="margin-top: 3rem;"><a href="" class="Designh3">Horarios de atencion</a></h3>
+              <br>
               <h4 class="DesignTextHorario">Lunes a Viernes</h4>
-              <br />
+              <br>
               <span>
                 <h4 class="DesignTextHorario">9:00-14:00 Hrs./</h4>
                 <h4 class="DesignTextHorario">15:00-18:00 Hrs.</h4>
@@ -300,9 +261,7 @@
           </div>
         </div>
         <div class="ContDataFooter">
-          <h6>
-            Copyright © 2024 Ferreteria Ferremax. Todos los derechos reservados.
-          </h6>
+          <h6>Copyright © 2024 Ferreteria Ferremax. Todos los derechos reservados.</h6>
         </div>
       </div>
     </footer>

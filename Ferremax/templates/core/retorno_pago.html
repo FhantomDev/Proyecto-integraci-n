@@ -27,9 +27,7 @@ background-size: cover;">
         </ul>
       </nav>
       {% if request.session.nombreUsuario %}
-      <h2>Bienvenido {{request.session.nombreUsuario}}</h2>
-      {% else %}
-      <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
+      <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
       {% endif %}  </div>    </div>
   </header>
   <main>
@@ -95,9 +93,9 @@ background-size: cover;">
                 <h4 class="DesignTextInteres">>  Nosotros</h4>
               </span>
             </a>
-            <a class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url "productos" %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
-                <h4 class="DesignTextInteres">>  Catalogo</h4>
+                <h4 class="DesignTextInteres">>  Productos</h4>
               </span>
             </a>
             <a href="{% url "Contacto" %}" class="DesignInteresFooter" style="text-decoration: none;">
