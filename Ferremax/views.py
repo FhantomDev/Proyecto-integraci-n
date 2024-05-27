@@ -5,6 +5,7 @@ from .models import marca, categoria, proveedor, producto, cargo, empleado, usua
 from .apiMonedas import dolar, euro
 import requests
 import json
+from django.core.mail import send_mail
 
 from django.conf import settings
 from django.http import JsonResponse
@@ -174,6 +175,13 @@ def registro(request):
                 contraseña=contraseña1,
             )
             usu.save()
+            send_mail(
+                'Confirmación de registro',
+                'Gracias por registrarte en Ferremax.',
+                settings.EMAIL_HOST_USER,
+                [usu.correo],
+                fail_silently=False,
+            )
             return render(request, "core/Login.html")
 
         else:
