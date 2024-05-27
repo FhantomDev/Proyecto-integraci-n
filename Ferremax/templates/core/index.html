@@ -27,9 +27,7 @@ background-size: cover;">
       </nav>
       {% if request.session.nombreUsuario %}
       <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
-      <div class="d-flex justify-content-center m-3">
-        <a class="btn btn-danger" href="{% url 'salir' %}">Cerrar sesión</a>
-      </div>
+      <a href="{% url 'Logout' %}" class="btn"><Button>cerrar sesion</Button></a>
       {% else %}
       <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
       {% endif %}    </div>
@@ -127,7 +125,7 @@ background-size: cover;">
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{% static "img/Carrusel1_Ferremax.jpg" %}"  class="d-block w-100" alt="...">
+            <img src="{% static 'img/Carrusel1_Ferremax.jpg' %}"  class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
             <img src="{% static 'img/Carrusel2_Ferremax.jpg' %}"  class="d-block w-100" alt="...">
@@ -153,14 +151,14 @@ background-size: cover;">
       <div class="ContInformationFooter">
         <div class="ContOrderInfoFooter">
           <div class="ContInfoFooterFoto">
-            <img src="{% static "img/ferremaxLogo.png" %}">
+            <img src="{% static 'img/ferremaxLogo.png' %}">
           </div>
           <div class="ContInfoFooterContacto">
             <h3 style="margin-top: 3rem;"><a href="{%url 'Contacto' %}"  Class="Designh3">Contacto</a></h3>
             <br>
             <a href="" class="DesignCorreoFooter" style="text-decoration: none;">
               <span>
-                <img src="{% static "img/email-1573-svgrepo-com.svg" %}" width="20px" style="margin-left: 15%;">
+                <img src="{% static 'img/email-1573-svgrepo-com.svg' %}" width="20px" style="margin-left: 15%;">
               </span>
               <span>
                 <h4 class="DesignTextCorreo">Contacto@Ferremax.cl"</h4>
@@ -168,19 +166,19 @@ background-size: cover;">
             </a>
             <a href="" class="DesignCellphoneFooter" style="text-decoration: none;">
               <span>
-                <img src="{% static "img/cellphone-svgrepo-com.svg" %}" width="30px">
+                <img src="{% static 'img/cellphone-svgrepo-com.svg' %}" width="30px">
               </span>
               <h4 class="DesignTextCellphone">+56 9 8336 5361</h4>
             </a>
             <a href="" class="DesignTelephoneFooter" style="text-decoration: none;">
               <span>
-                <img src="{% static "img/telephone-svgrepo-com.svg" %}" width="20px">
+                <img src="{% static 'img/telephone-svgrepo-com.svg' %}" width="20px">
               </span>
               <h4 class="DesignTextTelephone">+56 9 8336 5361</h4>
             </a>
             <a href="" class="DesignStreetFooter" style="text-decoration: none;">
               <span>
-                <img src="{% static "img/location-pin-svgrepo-com.svg"%}" width="30px">
+                <img src="{% static 'img/location-pin-svgrepo-com.svg' %}" width="30px">
               </span>
               <h4 class="DesignTextLocation">Ismael Tocornal 8063</h4>
             </a>
@@ -188,22 +186,22 @@ background-size: cover;">
           <div class="ContInfoFooterInteres">
             <h3 style="margin-top: 3rem;"><a href="" class="Designh3">Links de Interes</a></h3>
             <br>
-            <a href="{% url "index" %}" class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url 'index' %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
                 <h4 class="DesignTextInteres">>  Home</h4>
               </span>
             </a>
-            <a href="{% url "Nosotros" %}" class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url 'Nosotros' %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
                 <h4 class="DesignTextInteres">>  Nosotros</h4>
               </span>
             </a>
-            <a href="{% url "productos" %}" class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url 'productos' %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
                 <h4 class="DesignTextInteres">>  Productos</h4>
               </span>
             </a>
-            <a href="{% url "Contacto" %}" class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url 'Contacto' %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
                 <h4 class="DesignTextInteres">>  Contacto</h4>
               </span>

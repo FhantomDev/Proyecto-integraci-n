@@ -15,7 +15,7 @@
   </head>
   <body
     style="
-      background-image: url({% static "/img/design.png" %});
+      background-image: url({% static '/img/design.png' %});
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;
@@ -24,7 +24,7 @@
     <header>
       <div class="NavBarDesign LetterNav">
         <div class="logo">
-          <img src="{% static "img/ferremaxLogo.png" %}">
+          <img src="{% static 'img/ferremaxLogo.png' %}">
         </div>
         <nav>
           <ul class="nav-links">
@@ -36,6 +36,7 @@
         </nav>
         {% if request.session.nombreUsuario %}
         <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
+        <a href="{% url 'Logout' %}" class="btn"><Button>cerrar sesion</Button></a>
         {% else %}
         <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
         {% endif %}      </div>
@@ -49,7 +50,7 @@
       </div>
       <div class="ContInfoNosotros">
         <div class="ImgContainer">
-          <img src="{% static "img/img_Nosotros.jpg" %}">
+          <img src="{% static 'img/img_Nosotros.jpg' %}">
         </div>
         <div class="ContInfoText">
           <div class="ContTextInfoNosotros">
@@ -104,7 +105,7 @@
           <div class="BlockServ">
             <div class="DesignCard">
               <div class="ContImg">
-                <img src="{% static "img/Servicios_Ferremax1.jpg" %}">
+                <img src="{% static 'img/Servicios_Ferremax1.jpg' %}">
               </div>
               <div class="ServText">
                 <h2>Trabajos electricos</h2>
@@ -114,7 +115,7 @@
           <div class="BlockServ">
             <div class="DesignCard">
               <div class="ContImg">
-                <img src="{% static "img/Servicios_Ferremax2.jpg" %}">
+                <img src="{% static 'img/Servicios_Ferremax2.jpg' %}">
               </div>
               <div class="ServText">
                 <h2>Camaras de seguridad</h2>
@@ -124,7 +125,7 @@
           <div class="BlockServ">
             <div class="DesignCard">
               <div class="ContImg">
-                <img src="{% static "img/Servicios_Ferremax3.jpg" %}">
+                <img src="{% static 'img/Servicios_Ferremax3.jpg' %}">
               </div>
               <div class="ServText">
                 <h2>Herramientas</h2>
@@ -134,7 +135,7 @@
           <div class="BlockServ">
             <div class="DesignCard">
               <div class="ContImg">
-                <img src="{% static "img/Servicios_Ferremax4.jpg" %}">
+                <img src="{% static 'img/Servicios_Ferremax4.jpg' %}">
               </div>
               <div class="ServText">
                 <h2>Soldaduras</h2>
@@ -146,7 +147,7 @@
           <div class="BlockServ">
             <div class="DesignCard">
               <div class="ContImg">
-                <img src="{% static "img/Servicios_Ferremax5.png" %}">
+                <img src="{% static 'img/Servicios_Ferremax5.png' %}">
               </div>
               <div class="ServText">
                 <h2>Instalacion de cortinas</h2>
@@ -156,7 +157,7 @@
           <div class="BlockServ">
             <div class="DesignCard">
               <div class="ContImg">
-                <img src="{% static "img/Servicios_Ferremax6.jpg" %}">
+                <img src="{% static 'img/Servicios_Ferremax6.jpg' %}">
               </div>
               <div class="ServText">
                 <h2>Motores para Portones</h2>
@@ -166,7 +167,7 @@
           <div class="BlockServ">
             <div class="DesignCard">
               <div class="ContImg">
-                <img src="{% static "img/Servicios_Ferremax7.jpg" %}">
+                <img src="{% static 'img/Servicios_Ferremax7.jpg' %}">
               </div>
               <div class="ServText">
                 <h2>Alarmas Vecinales</h2>
@@ -176,7 +177,7 @@
           <div class="BlockServ">
             <div class="DesignCard">
               <div class="ContImg">
-                <img src="{% static "img/Servicios_Ferremax8.jpg" %}">
+                <img src="{% static 'img/Servicios_Ferremax8.jpg' %}">
               </div>
               <div class="ServText">
                 <h2>Otras Instalaciones</h2>
@@ -192,14 +193,14 @@
         <div class="ContInformationFooter">
           <div class="ContOrderInfoFooter">
             <div class="ContInfoFooterFoto">
-              <img src="{% static "img/ferremaxLogo.png" %}">
+              <img src="{% static 'img/ferremaxLogo.png' %}">
             </div>
             <div class="ContInfoFooterContacto">
               <h3 style="margin-top: 3rem;"><a href="{%url 'Contacto' %}"  Class="Designh3">Contacto</a></h3>
               <br>
               <a href="" class="DesignCorreoFooter" style="text-decoration: none;">
                 <span>
-                  <img src="{% static "img/email-1573-svgrepo-com.svg" %}" width="20px" style="margin-left: 15%;">
+                  <img src="{% static 'img/email-1573-svgrepo-com.svg' %}" width="20px" style="margin-left: 15%;">
                 </span>
                 <span>
                   <h4 class="DesignTextCorreo">Contacto@Ferremax.cl"</h4>
@@ -207,19 +208,19 @@
               </a>
               <a href="" class="DesignCellphoneFooter" style="text-decoration: none;">
                 <span>
-                  <img src="{% static "img/cellphone-svgrepo-com.svg" %}" width="30px">
+                  <img src="{% static 'img/cellphone-svgrepo-com.svg' %}" width="30px">
                 </span>
                 <h4 class="DesignTextCellphone">+56 9 8336 5361</h4>
               </a>
               <a href="" class="DesignTelephoneFooter" style="text-decoration: none;">
                 <span>
-                  <img src="{% static "img/telephone-svgrepo-com.svg" %}" width="20px">
+                  <img src="{% static 'img/telephone-svgrepo-com.svg' %}" width="20px">
                 </span>
                 <h4 class="DesignTextTelephone">+56 9 8336 5361</h4>
               </a>
               <a href="" class="DesignStreetFooter" style="text-decoration: none;">
                 <span>
-                  <img src="{% static "img/location-pin-svgrepo-com.svg"%}" width="30px">
+                  <img src="{% static 'img/location-pin-svgrepo-com.svg' %}" width="30px">
                 </span>
                 <h4 class="DesignTextLocation">Ismael Tocornal 8063</h4>
               </a>
@@ -227,22 +228,22 @@
             <div class="ContInfoFooterInteres">
               <h3 style="margin-top: 3rem;"><a href="" class="Designh3">Links de Interes</a></h3>
               <br>
-              <a href="{% url "index" %}" class="DesignInteresFooter" style="text-decoration: none;">
+              <a href="{% url 'index' %}" class="DesignInteresFooter" style="text-decoration: none;">
                 <span>
                   <h4 class="DesignTextInteres">>  Home</h4>
                 </span>
               </a>
-              <a href="{% url "Nosotros" %}" class="DesignInteresFooter" style="text-decoration: none;">
+              <a href="{% url 'Nosotros' %}" class="DesignInteresFooter" style="text-decoration: none;">
                 <span>
                   <h4 class="DesignTextInteres">>  Nosotros</h4>
                 </span>
               </a>
-              <a href="{% url "productos" %}" class="DesignInteresFooter" style="text-decoration: none;">
+              <a href="{% url 'productos' %}" class="DesignInteresFooter" style="text-decoration: none;">
                 <span>
                   <h4 class="DesignTextInteres">>  Productos</h4>
                 </span>
               </a>
-              <a href="{% url "Contacto" %}" class="DesignInteresFooter" style="text-decoration: none;">
+              <a href="{% url 'Contacto' %}" class="DesignInteresFooter" style="text-decoration: none;">
                 <span>
                   <h4 class="DesignTextInteres">>  Contacto</h4>
                 </span>

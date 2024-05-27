@@ -53,16 +53,15 @@ class producto(models.Model):
 
 class empleado(models.Model):
     idEmpleado = models.AutoField(primary_key=True)
-    pNombreEmpleado = models.CharField(max_length=20, blank=False, null=False)
-    sNombreEmpleado = models.CharField(max_length=20, blank=False, null=False)
-    pApellidoEmpleado = models.CharField(max_length=20, blank=False, null=False)
-    sApellidoEmpleado = models.CharField(max_length=20, blank=False, null=False)
-    direccionEmpleado = models.CharField(max_length=100, blank=False, null=False)
+    nombreEmpleado = models.CharField(max_length=20, blank=False, null=False)
+    nombreCompleto = models.CharField(max_length=20, blank=False, null=False)
+    correo = models.CharField(max_length=20, blank=False, null=False)
     edad = models.IntegerField()
+    contraseña = models.CharField(max_length=20, blank=False, null=False)
     cargo = models.ForeignKey("cargo", on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.pNombreEmpleado)+" "+str(self.pApellidoEmpleado)
+        return str(self.nombreCompleto)
 
 
 class usuario(models.Model):

@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body style="background-image: url({% static "/img/design.png" %});
+<body style="background-image: url({% static '/img/design.png' %});
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover;">
@@ -40,7 +40,7 @@ background-size: cover;">
   <header>
     <div class="NavBarDesign LetterNav">
       <div class="logo">
-        <img src="{% static "img/ferremaxLogo.png" %}">
+        <img src="{% static 'img/ferremaxLogo.png' %}">
       </div>
       <nav>
         <ul class="nav-links">
@@ -52,6 +52,7 @@ background-size: cover;">
       </nav>
       {% if request.session.nombreUsuario %}
       <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
+      <a href="{% url 'Logout' %}" class="btn"><Button>cerrar sesion</Button></a>
       {% else %}
       <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
       {% endif %}    </div>
@@ -68,7 +69,7 @@ background-size: cover;">
             <br>
             <div class="BlockFacebook">
                 <div class="BlockImgRedes">
-                    <img style="background-color: #3b5998;"src="{% static "img/Facebook_Logo.png" %}">
+                    <img style="background-color: #3b5998;"src="{% static 'img/Facebook_Logo.png' %}">
                 </div>
                 <h6 class="DesignTextSocialWebs"><a href="https://www.facebook.com/ferremax.cl/?locale=es_LA" style="text-decoration: none; color: white;">Ver Ferremax en Facebook</a></h6>
             </div>
@@ -76,7 +77,7 @@ background-size: cover;">
             <br>
             <div class="BlockTwitter">
                 <div class="BlockImgRedes">
-                    <img src="{% static "img/Twitter_Logo.jpg" %}">
+                    <img src="{% static 'img/Twitter_Logo.jpg' %}">
                 </div>
                 <h6 class="DesignTextSocialWebs"><a href="https://twitter.com/fferremax?lang=es" style="text-decoration: none; color: white;">Ver Ferremax en Twitter</a></h6>
             </div>
@@ -84,7 +85,7 @@ background-size: cover;">
             <br>
             <div class="BlockInstagram">
                 <div class="BlockImgRedes">
-                    <img src="{% static "img/logoIg.png" %}" style="background: linear-gradient(45deg,#f09433 0%,#e6685c 25%,#dc2777 50%,#be18ab 75%,#9c27b0 100%);">
+                    <img src="{% static 'img/logoIg.png' %}" style="background: linear-gradient(45deg,#f09433 0%,#e6685c 25%,#dc2777 50%,#be18ab 75%,#9c27b0 100%);">
                 </div>
                 <h6 class="DesignTextSocialWebs"><a href="https://www.instagram.com/ferremax.cl/?_ga=2.127788813.1422272949.1715469944-1087633.1715375359&_gac=1.251732859.1715383332.CjwKCAjwi_exBhA8EiwA_kU1Mp1_iqWRQfitdc2vsifMUp_Yh5gGtCaHiwlTmxRaO6ju_alJgQ3l5hoCZKUQAvD_BwE" style="text-decoration: none; color: white;">Ver Ferremax en Instagram</a></h6>
             </div>
@@ -119,14 +120,14 @@ background-size: cover;">
       <div class="ContInformationFooter">
         <div class="ContOrderInfoFooter">
           <div class="ContInfoFooterFoto">
-            <img src="{% static "img/ferremaxLogo.png" %}">
+            <img src="{% static 'img/ferremaxLogo.png' %}">
           </div>
           <div class="ContInfoFooterContacto">
             <h3 style="margin-top: 3rem;"><a href="{%url 'Contacto' %}"  Class="Designh3">Contacto</a></h3>
             <br>
             <a href="" class="DesignCorreoFooter" style="text-decoration: none;">
               <span>
-                <img src="{% static "img/email-1573-svgrepo-com.svg" %}" width="20px" style="margin-left: 15%;">
+                <img src="{% static 'img/email-1573-svgrepo-com.svg' %}" width="20px" style="margin-left: 15%;">
               </span>
               <span>
                 <h4 class="DesignTextCorreo">Contacto@Ferremax.cl"</h4>
@@ -134,19 +135,19 @@ background-size: cover;">
             </a>
             <a href="" class="DesignCellphoneFooter" style="text-decoration: none;">
               <span>
-                <img src="{% static "img/cellphone-svgrepo-com.svg" %}" width="30px">
+                <img src="{% static 'img/cellphone-svgrepo-com.svg' %}" width="30px">
               </span>
               <h4 class="DesignTextCellphone">+56 9 8336 5361</h4>
             </a>
             <a href="" class="DesignTelephoneFooter" style="text-decoration: none;">
               <span>
-                <img src="{% static "img/telephone-svgrepo-com.svg" %}" width="20px">
+                <img src="{% static 'img/telephone-svgrepo-com.svg' %}" width="20px">
               </span>
               <h4 class="DesignTextTelephone">+56 9 8336 5361</h4>
             </a>
             <a href="" class="DesignStreetFooter" style="text-decoration: none;">
               <span>
-                <img src="{% static "img/location-pin-svgrepo-com.svg"%}" width="30px">
+                <img src="{% static 'img/location-pin-svgrepo-com.svg' %}" width="30px">
               </span>
               <h4 class="DesignTextLocation">Ismael Tocornal 8063</h4>
             </a>
@@ -154,22 +155,22 @@ background-size: cover;">
           <div class="ContInfoFooterInteres">
             <h3 style="margin-top: 3rem;"><a href="" class="Designh3">Links de Interes</a></h3>
             <br>
-            <a href="{% url "index" %}" class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url 'index' %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
                 <h4 class="DesignTextInteres">>  Home</h4>
               </span>
             </a>
-            <a href="{% url "Nosotros" %}" class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url 'Nosotros' %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
                 <h4 class="DesignTextInteres">>  Nosotros</h4>
               </span>
             </a>
-            <a href="{% url "productos" %}" class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url 'productos' %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
                 <h4 class="DesignTextInteres">>  Productos</h4>
               </span>
             </a>
-            <a href="{% url "Contacto" %}" class="DesignInteresFooter" style="text-decoration: none;">
+            <a href="{% url 'Contacto' %}" class="DesignInteresFooter" style="text-decoration: none;">
               <span>
                 <h4 class="DesignTextInteres">>  Contacto</h4>
               </span>

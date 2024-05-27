@@ -28,40 +28,34 @@ def Contacto(request):
 
 
 def crud_cuentas(request):
-    if request.method != "POST":
-        carg = cargo.objects.all()
+    if request.method == "POST":
+        nombre_empleado = request.POST["nombre_empleado"]
+        nombre_completo = request.POST["nombre_completo"]
+        correo = request.POST["correo_empleado"]
+        edad = request.POST["edad_empleado"]
+        contraseña = request.POST["contraseña_empleado"]
+        IdCar = request.POST["cargo"]
 
-        context = {
-            "cargo": carg,
-        }
-        return render(request, "core/crud_cuentas.html", context)
-    else:
-        p_nombre_empleado = request.POST["txtPrimer_nombre_Empleado"]
-        s_nombre_empleado = request.POST["txtSegundo_nombre_Empleado"]
-        p_apellido_empleado = request.POST["txtPrimer_Apellido"]
-        s_apellido_empleado = request.POST["txtSegundo_Apellido"]
-        direccion_empleado = request.POST["txtDireccion"]
-        edad_empleado = request.POST["txtEdad"]
-        id_cargo = request.POST["cargo"]
+        objCar = cargo.objects.get(idCargo=IdCar)
 
-        objCargo = cargo.objects.get(idCargo=id_cargo)
-
-        emp = empleado.objects.create(
-            pNombreEmpleado=p_nombre_empleado,
-            sNombreEmpleado=s_nombre_empleado,
-            pApellidoEmpleado=p_apellido_empleado,
-            sApellidoEmpleado=s_apellido_empleado,
-            direccionEmpleado=direccion_empleado,
-            edad=edad_empleado,
-            cargo=objCargo,
+        Emp = empleado.objects.create(
+            nombreEmpleado=nombre_empleado,
+            nombreCompleto=nombre_completo,
+            correo=correo,
+            edad=edad,
+            contraseña=contraseña,
+            cargo=objCar,
         )
-        emp.save()
 
-        context = {
-            "mensaje": "Exito"
+        Emp.save()
+        return redirect("crud_cuentas")
 
-        }
-        return render(request, "core/resultado.html", context)
+    else:
+        Car = cargo.objects.all()
+        Empleados = empleado.objects.all()
+
+        context = {"Cargo": Car, "cuenta": Empleados}
+        return render(request, "core/crud_cuentas.html", context)
 
 
 def crud_productos(request):
@@ -142,11 +136,20 @@ def Login(request):
             except usuario.DoesNotExist:
                 usu = None
 
+            try:
+                emp = empleado.objects.get(
+                    nombreEmpleado=nombre_usuario, contraseña=contraseña)
+            except empleado.DoesNotExist:
+                emp = None
+
             if usu is not None:
                 request.session["nombreUsuario"] = nombre_usuario
                 return render(request, "core/index.html")
-            else:
-                return render(request, "core/Login.html")
+            elif emp is not None:
+                request.session["nombreEmpleado"] = nombre_usuario
+                context = {
+                }
+                return render(request, "core/IndexEmpleados.html", context)
 
         return render(
             request,
@@ -306,6 +309,13 @@ def IndexEmpleados(request):
     return render(request, "core/IndexEmpleados.html")
 
 
-def salir(request):
+def Logout(request):
     del request.session["nombreUsuario"]
     return redirect("index")
+
+
+def EliminarCuenta(request, pk):
+    Emp = empleado.objects.get(idEmpleado=pk)
+    Emp.delete()
+
+    return redirect("crud_cuentas")
