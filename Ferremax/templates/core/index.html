@@ -27,6 +27,9 @@ background-size: cover;">
       </nav>
       {% if request.session.nombreUsuario %}
       <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
+      <div class="d-flex justify-content-center m-3">
+        <a class="btn btn-danger" href="{% url 'salir' %}">Cerrar sesión</a>
+      </div>
       {% else %}
       <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
       {% endif %}    </div>

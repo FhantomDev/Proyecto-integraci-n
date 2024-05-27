@@ -185,10 +185,7 @@ def registro(request):
             return render(request, "core/Login.html")
 
         else:
-            return render(
-                request,
-                "core/registro.html",
-            )
+            return render(request, "core/registro.html")
 
     context = {}
     return render(request, "core/registro.html", context)
@@ -303,3 +300,12 @@ def edicion_producto(request, pk):
         prod.save()
 
         return redirect("crud_productos")
+
+
+def IndexEmpleados(request):
+    return render(request, "core/IndexEmpleados.html")
+
+
+def salir(request):
+    del request.session["nombreUsuario"]
+    return redirect("index")
