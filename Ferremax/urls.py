@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from .api import ProductoViewSet
+from .api import ProductoViewSet, CategoriaViewSet
 
 from .views import (
     index,
@@ -24,6 +24,7 @@ from .views import (
 
 router = routers.DefaultRouter()
 router.register('api/v1/productos', ProductoViewSet, 'productos')
+router.register('api/v1/categorias', CategoriaViewSet, 'categorias')
 
 urlpatterns = [
     path("", index, name="index"),
