@@ -73,3 +73,23 @@ class usuario(models.Model):
 
     def __str__(self):
         return str(self.nombreCompleto)
+
+
+class pedido(models.Model):
+    idPedido = models.AutoField(primary_key=True)
+    fechaPedido = models.DateField(blank=False, null=False)
+    totalPedido = models.IntegerField()
+    usuario = models.ForeignKey("usuario", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.idPedido)+" "+str(self.usuario)
+
+
+class detallePedido(models.Model):
+    pedido = models.ForeignKey("pedido", on_delete=models.CASCADE)
+    producto = models.ForeignKey("producto", on_delete=models.CASCADE)
+    cantidadProducto = models.IntegerField()
+    subtotalPedido = models.IntegerField()
+
+    def __str__(self):
+        return str(self.pedido)+" "+str(self.producto)
