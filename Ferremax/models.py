@@ -77,6 +77,9 @@ class usuario(models.Model):
 
 class pedido(models.Model):
     idPedido = models.AutoField(primary_key=True)
+    idOrden = models.IntegerField()
+    idSesion = models.IntegerField()
+    direccionPedido = models.CharField(max_length=50, blank=False, null=False)
     fechaPedido = models.DateField(blank=False, null=False)
     totalPedido = models.IntegerField()
     usuario = models.ForeignKey("usuario", on_delete=models.CASCADE)
