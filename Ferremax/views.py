@@ -1,7 +1,8 @@
+from datetime import datetime
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import marca, categoria, proveedor, producto, cargo, empleado, usuario
+from .models import marca, categoria, proveedor, producto, cargo, empleado, usuario, pedido
 from .apiMonedas import dolar, euro
 import requests
 import json
@@ -113,7 +114,7 @@ def resultado(request):
     return render(request, "core/resultado.html", context)
 
 
-def pedido(request):
+def Pedido(request):
     valorDolar = dolar()
     valorEuro = euro()
     context = {
@@ -208,6 +209,24 @@ def pago(request):
     response = transaction.create(buy_order, session_id, amount, return_url)
     token = response['token']
     url = response['url']
+
+    nUsuario = request.session.get("nombreUsuario")
+    nombreUsuario = usuario.objects.get(nombreUsuario=nUsuario)
+    ordenCompra = request.POST["ordenCompra"]
+    idSesion = request.POST["idSesion"]
+    direccion = request.POST["direccion"]
+    fecha = datetime.now()
+    total = request.POST["monto"]
+
+    objPedido = pedido.objects.create(
+        idOrden = ordenCompra,
+        idSesion = idSesion,
+        direccionPedido = direccion,
+        fechaPedido = fecha,
+        totalPedido = total,
+        usuario = nombreUsuario
+    )
+    objPedido.save()
     
     return render(request, 'core/pago.html', {'url': url, 'token': token})
 

@@ -11,9 +11,9 @@ function cargarEventListeners() {
   
   comprar.addEventListener('click', () => {  
     obtenerDatosCompra();
-    articulosCarrito = [];
     sincronizarStorage();
   })
+
   listaProductos.addEventListener('click', agregarProducto);
 
   carrito.addEventListener('click', eliminarProducto);

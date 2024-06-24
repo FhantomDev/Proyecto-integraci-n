@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const total = localStorage.getItem('total-compra')
+    const productos = JSON.parse(localStorage.getItem('carrito'))
 
     const pesos = document.querySelector('#pesos')
     const monto = document.querySelector('#monto')
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const euro = document.querySelector('#euro')
     const valorDolar = document.querySelector('#valor-dolares')
     const valorEuro = document.querySelector('#valor-euro')
+    const divProductos = document.querySelector('#productos')
 
     const dolares_obtenidos = total * (1 / dolar.textContent)
     const euros_obtenidos = total * (1 / euro.textContent)
@@ -18,6 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
     valorEuro.textContent = euros_obtenidos.toFixed(2)
     
     numerosRandom()
+
+    productos.forEach(producto => {
+        const nombre = document.createElement('p');
+        const cantidad = document.createElement('p');
+
+        nombre.textContent = producto.nombre;
+        cantidad.textContent = producto.cantidad;
+
+        divProductos.appendChild(nombre)
+        divProductos.appendChild(cantidad)
+    });
+
+    console.log(productos)
 })
 
 function numerosRandom() {
