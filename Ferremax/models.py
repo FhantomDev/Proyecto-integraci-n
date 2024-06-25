@@ -4,6 +4,14 @@ from django.db import models
 from django.db import models
 
 # Create your models here.
+class tipoUsuario(models.Model):
+    idTipoUsuario = models.AutoField(primary_key=True)
+    nombreTipoUsuario = models.CharField(max_length=20, blank=False, null=False)
+
+    def __str__(self):
+        return str(self.nombreTipoUsuario)
+
+
 class categoria(models.Model):
     idCategoria = models.AutoField(primary_key=True)
     nombreCategoria = models.CharField(max_length=50, blank=False, null=False)
@@ -59,6 +67,7 @@ class empleado(models.Model):
     edad = models.IntegerField()
     contraseña = models.CharField(max_length=20, blank=False, null=False)
     cargo = models.ForeignKey("cargo", on_delete=models.CASCADE)
+    tipoUsuario = models.ForeignKey("tipoUsuario", on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.nombreCompleto)
@@ -70,6 +79,7 @@ class usuario(models.Model):
     nombreCompleto = models.CharField(max_length=20, blank=False, null=False)
     correo = models.CharField(max_length=20, blank=False, null=False)
     contraseña = models.CharField(max_length=20, blank=False, null=False)
+    tipoUsuario = models.ForeignKey("tipoUsuario", on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.nombreCompleto)

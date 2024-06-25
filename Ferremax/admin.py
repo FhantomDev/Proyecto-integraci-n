@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import categoria, marca, proveedor, producto, cargo, empleado, usuario, pedido, detallePedido
+from .models import categoria, marca, proveedor, producto, cargo, empleado, usuario, pedido, detallePedido, tipoUsuario
 # Register your models here.
 
 admin.site.register(categoria) 
@@ -11,3 +11,4 @@ admin.site.register(empleado)
 admin.site.register(usuario)
 admin.site.register(pedido)
 admin.site.register(detallePedido)
+admin.site.register(tipoUsuario)
