@@ -2,7 +2,7 @@ from datetime import datetime
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import marca, categoria, proveedor, producto, cargo, empleado, usuario, pedido
+from .models import marca, categoria, proveedor, producto, cargo, empleado, usuario, pedido, tipoUsuario
 from .apiMonedas import dolar, euro
 import requests
 import json
@@ -171,6 +171,9 @@ def registro(request):
         correo = request.POST["correo"]
         contraseña1 = request.POST["contraseña1"]
         contraseña2 = request.POST["contraseña2"]
+        tipo = 2
+
+        objTipo = tipoUsuario.objects.get(idTipoUsuario=tipo)
 
         if contraseña1 == contraseña2:
             usu = usuario.objects.create(
@@ -178,6 +181,7 @@ def registro(request):
                 nombreCompleto=nombre_completo,
                 correo=correo,
                 contraseña=contraseña1,
+                tipoUsuario=objTipo
             )
             usu.save()
             send_mail(
