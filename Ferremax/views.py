@@ -184,13 +184,6 @@ def registro(request):
                 tipoUsuario=objTipo
             )
             usu.save()
-            send_mail(
-                'Confirmación de registro',
-                'Gracias por registrarte en Ferremax.',
-                settings.EMAIL_HOST_USER,
-                [usu.correo],
-                fail_silently=False,
-            )
             return render(request, "core/Login.html")
 
         else:
