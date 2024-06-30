@@ -28,7 +28,7 @@ def Nosotros(request):
 def Contacto(request):
     return render(request, "core/Contacto.html")
 
-@autorizadoEmpleado
+
 def crud_cuentas(request):
     if request.method == "POST":
         nombre_empleado = request.POST["nombre_empleado"]
@@ -59,7 +59,7 @@ def crud_cuentas(request):
         context = {"Cargo": Car, "cuenta": Empleados}
         return render(request, "core/crud_cuentas.html", context)
 
-@autorizadoEmpleado
+
 def crud_productos(request):
     if request.method != "POST":
         mar = marca.objects.all()
@@ -114,7 +114,7 @@ def resultado(request):
     }
     return render(request, "core/resultado.html", context)
 
-@autorizadoTotal
+
 def Pedido(request):
     valorDolar = dolar()
     valorEuro = euro()
@@ -193,7 +193,6 @@ def registro(request):
     return render(request, "core/registro.html", context)
 
 
-@autorizadoTotal
 def pago(request):
     buy_order = request.POST["ordenCompra"]
     session_id = request.POST["idSesion"]
@@ -230,7 +229,6 @@ def pago(request):
     return render(request, 'core/pago.html', {'url': url, 'token': token})
 
 
-@autorizadoTotal
 def retorno_pago(request):
     token = request.GET.get('token_ws')
     
@@ -279,7 +277,7 @@ def eliminarProducto(request, pk):
     return redirect("crud_productos")
 
 
-@autorizadoEmpleado
+
 def edicion_producto(request, pk):
     if request.method != "POST":
         
@@ -325,7 +323,6 @@ def edicion_producto(request, pk):
         return redirect("crud_productos")
 
 
-@autorizadoEmpleado
 def IndexEmpleados(request):
     return render(request, "core/IndexEmpleados.html")
 
