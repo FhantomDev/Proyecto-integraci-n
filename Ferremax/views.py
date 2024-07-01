@@ -37,6 +37,9 @@ def crud_cuentas(request):
         edad = request.POST["edad_empleado"]
         contraseña = request.POST["contraseña_empleado"]
         IdCar = request.POST["cargo"]
+        tipo = 2
+
+        objTipo = tipoUsuario.objects.get(idTipoUsuario=tipo)
 
         objCar = cargo.objects.get(idCargo=IdCar)
 
@@ -47,6 +50,7 @@ def crud_cuentas(request):
             edad=edad,
             contraseña=contraseña,
             cargo=objCar,
+            tipoUsuario=objTipo
         )
 
         Emp.save()
