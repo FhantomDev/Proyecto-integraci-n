@@ -67,9 +67,9 @@ background-size: cover;">
         </ul>
       </ul>
     </nav>
-    {% if request.session.nombreUsuario %}
-    <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
-    <a href="{% url 'Logout' %}" class="btn"><Button>cerrar sesion</Button></a>
+    {% if request.session.nombreCliente %}
+    <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreCliente}}</h2>
+    <a href="{% url 'Logout' %}" class="btn"><Button>Cerrar sesion</Button></a>
     {% else %}
     <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
     {% endif %}  </div>
@@ -94,7 +94,7 @@ background-size: cover;">
         <div class="ContServiciosInfo product-card {{ producto.categoria }}">
             <br>
             <div class='ContImgProducts' style="margin-top:10px">
-                <img src="{{ producto.imagenProducto }}" alt="{{ producto.nombreProducto }}">
+                <img src="media/{{ producto.imagenProducto }}" alt="{{ producto.nombreProducto }}">
             </div>
             <h5>{{ producto.nombreProducto }}</h5>
             <h4>{{ producto.precioProducto }}</h4>

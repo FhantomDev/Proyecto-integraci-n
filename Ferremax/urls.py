@@ -17,9 +17,19 @@ from .views import (
     registro,
     eliminarProducto,
     edicion_producto,
-    IndexEmpleados,
+    administrador,
     Logout,
-    EliminarCuenta
+    EliminarCuenta,
+    pago_invitado,
+    cambiarEstadoPedido,
+    bodeguero,
+    cambiarEstadoPedidoInvitado,
+    contador,
+    cambiarEstadoPago,
+    cambiarEstadoPagoInvitado,
+    login_empleados,
+    logout_empleado,
+    vendedor
 )
 
 router = routers.DefaultRouter()
@@ -35,15 +45,24 @@ urlpatterns = [
     path("resultado", resultado, name="resultado"),
     path("pedido", Pedido, name="pedido"),
     path("pago", pago, name="pago"),
+    path("pago_invitado", pago_invitado, name="pago_invitado"),
     path("retorno_pago", retorno_pago, name="retorno_pago"),
     path("productos", productos, name="productos"),
     path("Login", Login, name="Login"),
     path("registro", registro, name="registro"),
     path("edicion_producto/<str:pk>", edicion_producto, name="edicion_producto"),
     path("eliminarProducto/<str:pk>", eliminarProducto, name="eliminarProducto"),
-    path("IndexEmpleados", IndexEmpleados, name="IndexEmpleados"),
+    path("administrador", administrador, name="administrador"),
     path("Logout", Logout, name="Logout"),
     path("EliminarCuenta/<str:pk>", EliminarCuenta, name="EliminarCuenta"),
-
+    path("vendedor", vendedor, name="vendedor"),
+    path("cambiarEstadoPedido", cambiarEstadoPedido, name="cambiarEstadoPedido"),
+    path("bodeguero", bodeguero, name="bodeguero"),
+    path("cambiarEstadoPedidoInvitado", cambiarEstadoPedidoInvitado, name="cambiarEstadoPedidoInvitado"),
+    path("contador", contador, name="contador"),
+    path("cambiarEstadoPago", cambiarEstadoPago, name="cambiarEstadoPago"),
+    path("cambiarEstadoPagoInvitado", cambiarEstadoPagoInvitado, name="cambiarEstadoPagoInvitado"),
+    path("login_empleados", login_empleados, name="login_empleados"),
+    path("logout_empleado", logout_empleado, name="logout_empleado"),
     path('', include(router.urls)),
 ]

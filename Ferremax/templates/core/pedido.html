@@ -53,40 +53,27 @@ background-size: cover;">
           <li><a href="{% url 'Contacto' %}">Contacto</a></li>
         </ul>
       </nav>
-      {% if request.session.nombreUsuario %}
-      <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreUsuario}}</h2>
+      {% if request.session.runCliente %}
+      <h2 style="color:white; font-family: nonito, sans;">Bienvenido {{request.session.nombreCliente}}</h2>
+      <a href="{% url 'Logout' %}" class="btn"><Button>Cerrar sesion</Button></a>
+      {% else %}
+      <a href="{% url 'Login' %}" class="btn"><Button>Iniciar sesion</Button></a>
       {% endif %}
     </div>
 </header>
   <main>
     <div class='DesignContPedido'>
       <div style=" text-align:center; background-color: #1b3039; width:25%; margin-right:0; margin-left:37%; height:auto; margin-top: 13%;" class="ContServiciosInfo">
+        {% if request.session.runCliente %}
         <form action="pago" method="post">
           {% csrf_token %}
-        {% if request.session.nombreUsuario %}
           <h1 style="color:white; font-family: Montserrat, sans serif; font-weight:600; text-align:center;"> Complete los datos</h1>
           <div class="datosPedido">
             <label for="direccion" >Ingrese la dirección de despacho</label>
             <br>
             <input type="text" name="direccion" id="direccion" required>
           </div>
-        {% else  %}
-          <div class="datosPedido">
-            <h1 style="color:white; font-family: Montserrat, sans serif; font-weight:600; text-align:center;"> Complete los datos</h1>
-            <label for="nombre">Ingrese su nombre</label>
-            <br>
-            <input type="text" name="nombre" id="nombre" required>
-            <br>
-            <label for="celular">Ingrese su numero de contacto</label>
-            <br>
-            <input type="number" name="celular" id="celular" required>
-            <br>
-            <label for="direccion">Ingrese la dirección de despacho</label>
-            <br>
-            <input type="text" name="direccion" id="direccion" required>
-          </div>
-        {% endif %}
-        <div>
+          <div>
   
             <div class="DesignText" style="font-family: nonito, sans-serif, font-weight:600;">
               <br>
@@ -116,6 +103,56 @@ background-size: cover;">
             <button style=" margin-bottom: 10%; margin-top:5%; width:40%;  height:35%; border-radius:10px; background-color: #199bd3; border: 2px solid black; color:white;" type="submit" >Realizar pedido</button>
           </form>
         </div>
+        {% else  %}
+        <form action="pago_invitado" method="post">
+          {% csrf_token %}
+          <div class="datosPedido">
+            <h1 style="color:white; font-family: Montserrat, sans serif; font-weight:600; text-align:center;"> Complete los datos</h1>
+            <label for="nombre">Ingrese su nombre</label>
+            <br>
+            <input type="text" name="nombre" id="nombre" required>
+            <br>
+            <label for="run">Ingrese su run</label>
+            <br>
+            <input type="number" name="run" id="run" required>
+            <br>
+            <label for="correo">Ingrese su correo de contacto</label>
+            <br>
+            <input type="email" name="correo" id="correo" required>
+            <br>
+            <label for="direccion">Ingrese la dirección de despacho</label>
+            <br>
+            <input type="text" name="direccionSinRegistro" id="direccion" required>
+          </div>
+
+          <div>
+  
+            <div class="DesignText" style="font-family: nonito, sans-serif, font-weight:600;">
+              <br>
+              <div class="border">
+              </div>
+              <br>
+              <h2 style="color:white; font-family:nonito, sans serif; font-weight:600;">Orden de Pedido</h2>
+              <div class="ContServiciosInfo" style="background-color:white; width:60%; height:auto; margin-left:20%">
+                <p style="color:black;  margin-top:15%; "><strong>N. orden: </strong><span id="orden_txt"></span></p>
+                <input type="hidden" name="ordenCompra" id="orden_value" value="">
+              
+                <p style="color:black; "><strong>Sesión: </strong><span id="sesion_txt"></span></p>
+                <input type="hidden" name="idSesion" id="sesion_value" value="">
+        
+                <p style="color:black; "><strong>Total: </strong><span id="pesos"></span></p>
+        
+                <input type="hidden" name="monto" id="monto">
+                <p hidden id="dolar">{{dolar}}</p>
+                <p hidden id="euro">{{euro}}</p>
+                <p style="color:black; "><strong>Valor en dolares: </strong><span id="valor-dolares"></span></p>
+                <p style="color:black; "><strong>Valor en euro: </strong><span id="valor-euro"></span></p>
+              </div>
+            </div>
+            <button style=" margin-bottom: 10%; margin-top:5%; width:40%;  height:35%; border-radius:10px; background-color: #199bd3; border: 2px solid black; color:white;" type="submit" >Realizar pedido</button>
+          </form>
+        </div>
+        {% endif %}
       </div> 
     </div>
   </main>

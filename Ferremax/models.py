@@ -34,14 +34,22 @@ class proveedor(models.Model):
 
     def __str__(self):
         return str(self.nombreProveedor)
+    
 
-
-class cargo(models.Model):
-    idCargo= models.AutoField(primary_key=True)
-    nombreCargo = models.CharField(max_length=50, blank=False, null=False)
+class estadoPedido(models.Model):
+    idEstadoPedido = models.AutoField(primary_key=True)
+    nombreEstadoPedido = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
-        return str(self.nombreCargo)
+        return str(self.nombreEstadoPedido)
+
+
+class estadoPago(models.Model):
+    idEstadoPago = models.AutoField(primary_key=True)
+    nombreEstadoPago = models.CharField(max_length=50, blank=False, null=False)
+
+    def __str__(self):
+        return str(self.nombreEstadoPago)
 
 
 class producto(models.Model):
@@ -60,22 +68,19 @@ class producto(models.Model):
 
 
 class empleado(models.Model):
-    idEmpleado = models.AutoField(primary_key=True)
-    nombreEmpleado = models.CharField(max_length=20, blank=False, null=False)
+    runEmpleado = models.CharField(max_length=10, primary_key=True)
     nombreCompleto = models.CharField(max_length=20, blank=False, null=False)
     correo = models.CharField(max_length=20, blank=False, null=False)
     edad = models.IntegerField()
     contraseña = models.CharField(max_length=20, blank=False, null=False)
-    cargo = models.ForeignKey("cargo", on_delete=models.CASCADE)
     tipoUsuario = models.ForeignKey("tipoUsuario", on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.nombreCompleto)
 
 
-class usuario(models.Model):
-    idEmpleado = models.AutoField(primary_key=True)
-    nombreUsuario = models.CharField(max_length=20, blank=False, null=False)
+class cliente(models.Model):
+    runCliente = models.CharField(max_length=10, primary_key=True)
     nombreCompleto = models.CharField(max_length=20, blank=False, null=False)
     correo = models.CharField(max_length=20, blank=False, null=False)
     contraseña = models.CharField(max_length=20, blank=False, null=False)
@@ -92,10 +97,30 @@ class pedido(models.Model):
     direccionPedido = models.CharField(max_length=50, blank=False, null=False)
     fechaPedido = models.DateField(blank=False, null=False)
     totalPedido = models.IntegerField()
-    usuario = models.ForeignKey("usuario", on_delete=models.CASCADE)
+    estadoPedido = models.ForeignKey("estadoPedido", on_delete=models.CASCADE)
+    estadoPago = models.ForeignKey("estadoPago", on_delete=models.CASCADE)
+    cliente = models.ForeignKey("cliente", on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.idPedido)+" "+str(self.usuario)
+        return str(self.idPedido)+" "+str(self.cliente)
+    
+
+class pedidoSinRegistrar(models.Model):
+    idPedido = models.AutoField(primary_key=True)
+    idOrden = models.IntegerField()
+    idSesion = models.IntegerField()
+    runCliente = models.CharField(max_length=10, blank=False, null=False)
+    nombreCompleto = models.CharField(max_length=20, blank=False, null=False)
+    direccionPedido = models.CharField(max_length=50, blank=False, null=False)
+    correo = models.CharField(max_length=20, blank=False, null=False)
+    fechaPedido = models.DateField(blank=False, null=False)
+    totalPedido = models.IntegerField()
+    estadoPedido = models.ForeignKey("estadoPedido", on_delete=models.CASCADE)
+    estadoPago = models.ForeignKey("estadoPago", on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return str(self.idPedido)+" "+str(self.runCliente)
 
 
 class detallePedido(models.Model):

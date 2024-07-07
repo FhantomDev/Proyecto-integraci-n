@@ -2,12 +2,11 @@ from datetime import datetime
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import marca, categoria, proveedor, producto, cargo, empleado, usuario, pedido, tipoUsuario
+from .models import marca, categoria, proveedor, producto, empleado, cliente, pedido, tipoUsuario, estadoPedido, estadoPago, pedidoSinRegistrar
 from .apiMonedas import dolar, euro
 import requests
 import json
-from django.core.mail import send_mail
-from .permiso import autorizadoEmpleado, autorizadoTotal
+from django.db.models import Q
 
 from django.conf import settings
 from django.http import JsonResponse
@@ -41,15 +40,12 @@ def crud_cuentas(request):
 
         objTipo = tipoUsuario.objects.get(idTipoUsuario=tipo)
 
-        objCar = cargo.objects.get(idCargo=IdCar)
-
         Emp = empleado.objects.create(
             nombreEmpleado=nombre_empleado,
             nombreCompleto=nombre_completo,
             correo=correo,
             edad=edad,
             contraseña=contraseña,
-            cargo=objCar,
             tipoUsuario=objTipo
         )
 
@@ -57,10 +53,13 @@ def crud_cuentas(request):
         return redirect("crud_cuentas")
 
     else:
-        Car = cargo.objects.all()
+        tipo = tipoUsuario.objects.all()
         Empleados = empleado.objects.all()
 
-        context = {"Cargo": Car, "cuenta": Empleados}
+        context = {
+            "tipo": tipo, 
+            "cuenta": Empleados
+            }
         return render(request, "core/crud_cuentas.html", context)
 
 
@@ -122,66 +121,71 @@ def resultado(request):
 def Pedido(request):
     valorDolar = dolar()
     valorEuro = euro()
+
     context = {
         'dolar' : valorDolar,
         'euro' : valorEuro
     }
+
     return render(request, "core/pedido.html", context)
 
 
 def Login(request):
     if request.method == "POST":
-        nombre_usuario = request.POST["nombreUsuario"]
+        runCliente = request.POST["runCliente"]
         contraseña = request.POST["contraseña"]
-
-        if nombre_usuario and contraseña:
-            try:
-                usu = usuario.objects.get(
-                    nombreUsuario=nombre_usuario, contraseña=contraseña
-                )
-            except usuario.DoesNotExist:
-                usu = None
-
-            try:
-                emp = empleado.objects.get(
-                    nombreEmpleado=nombre_usuario, contraseña=contraseña)
-            except empleado.DoesNotExist:
-                emp = None
-
-            if usu is not None:
-                request.session["nombreUsuario"] = nombre_usuario
-                return render(request, "core/index.html")
-            elif emp is not None:
-                request.session["nombreEmpleado"] = nombre_usuario
-                context = {
-                }
-                return render(request, "core/IndexEmpleados.html", context)
-
-        return render(
-            request,
-            "core/Login.html",
-        )
-
+        try:
+            cli = cliente.objects.get(
+                        runCliente=runCliente, contraseña=contraseña
+                    )
+        except cliente.DoesNotExist:
+            cli = None
+        if cli is not None:
+            request.session["nombreCliente"] = cli.nombreCompleto
+            request.session["runCliente"] = cli.runCliente
+            return render(request, "core/index.html")
+        
     return render(
         request,
         "core/Login.html",
     )
 
 
+def login_empleados(request):
+    if request.method == "POST":
+        runEmp = request.POST["runEmpleado"]
+        contraseña = request.POST["contraseña"]
+        try:
+            emp = empleado.objects.get(
+                        runEmpleado=runEmp, contraseña=contraseña
+                    )
+        except empleado.DoesNotExist:
+            emp = None
+        if emp is not None:
+            request.session["nombreEmpleado"] = emp.nombreCompleto
+            request.session["runEmpleado"] = emp.runEmpleado
+            return render(request, "core/index.html")
+        
+    return render(
+        request,
+        "core/login_empleados.html",
+    )
+
+
 def registro(request):
     if request.method == "POST":
-        nombre_usuario = request.POST["nombreUsuario"]
+        run_cliente = request.POST["runCliente"]
         nombre_completo = request.POST["nombreCompleto"]
         correo = request.POST["correo"]
         contraseña1 = request.POST["contraseña1"]
         contraseña2 = request.POST["contraseña2"]
-        tipo = 2
+        tipo = 1
 
         objTipo = tipoUsuario.objects.get(idTipoUsuario=tipo)
 
         if contraseña1 == contraseña2:
-            usu = usuario.objects.create(
-                nombreUsuario=nombre_usuario,
+            usu = cliente.objects.create(
+                runCliente=run_cliente,
                 nombreCompleto=nombre_completo,
                 correo=correo,
                 contraseña=contraseña1,
@@ -198,6 +202,32 @@ def registro(request):
 
 
 def pago(request):
+    runCli = request.session.get("runCliente")
+    cli = cliente.objects.get(runCliente=runCli)
+
+    nOrder = request.POST["ordenCompra"]
+    idSesion = request.POST["idSesion"]
+    direccion = request.POST["direccion"]
+    fecha = datetime.now()
+    total = request.POST["monto"]
+    estPedido = 1
+    estPago = 1
+
+    objEstadoPedido = estadoPedido.objects.get(idEstadoPedido=estPedido)
+    objEstadoPago = estadoPago.objects.get(idEstadoPago=estPago)
+
+    objPedido = pedido.objects.create(
+        idOrden=nOrder,
+        idSesion=idSesion,
+        direccionPedido=direccion,
+        fechaPedido=fecha,
+        totalPedido=total,
+        estadoPedido=objEstadoPedido,
+        estadoPago=objEstadoPago,
+        cliente=cli,
+    )
+    objPedido.save()
+
     buy_order = request.POST["ordenCompra"]
     session_id = request.POST["idSesion"]
     amount = request.POST["monto"]
@@ -211,26 +241,55 @@ def pago(request):
     response = transaction.create(buy_order, session_id, amount, return_url)
     token = response['token']
     url = response['url']
-
-    nUsuario = request.session.get("nombreUsuario")
-    nombreUsuario = usuario.objects.get(nombreUsuario=nUsuario)
-    ordenCompra = request.POST["ordenCompra"]
-    idSesion = request.POST["idSesion"]
-    direccion = request.POST["direccion"]
-    fecha = datetime.now()
-    total = request.POST["monto"]
-
-    objPedido = pedido.objects.create(
-        idOrden = ordenCompra,
-        idSesion = idSesion,
-        direccionPedido = direccion,
-        fechaPedido = fecha,
-        totalPedido = total,
-        usuario = nombreUsuario
-    )
-    objPedido.save()
     
     return render(request, 'core/pago.html', {'url': url, 'token': token})
+
+
+def pago_invitado(request):
+    nombre = request.POST["nombre"]
+    run = request.POST["run"]
+    correo = request.POST["correo"]
+    direccion = request.POST["direccionSinRegistro"]
+
+    nOrder = request.POST["ordenCompra"]
+    idSesion = request.POST["idSesion"]
+    fecha = datetime.now()
+    total = request.POST["monto"]
+    estPedido = 1
+    estPago = 1
+
+    objEstadoPedido = estadoPedido.objects.get(idEstadoPedido=estPedido)
+    objEstadoPago = estadoPago.objects.get(idEstadoPago=estPago)
+
+    objPedido = pedidoSinRegistrar.objects.create(
+        idOrden=nOrder,
+        idSesion=idSesion,
+        runCliente=run,
+        nombreCompleto=nombre,
+        direccionPedido=direccion,
+        correo=correo,
+        fechaPedido=fecha,
+        totalPedido=total,
+        estadoPedido=objEstadoPedido,
+        estadoPago=objEstadoPago,
+    )
+    objPedido.save()
+
+    buy_order = request.POST["ordenCompra"]
+    session_id = request.POST["idSesion"]
+    amount = request.POST["monto"]
+    return_url = 'http://127.0.0.1:8000/retorno_pago'
+
+    transaction = Transaction(WebpayOptions(
+        IntegrationCommerceCodes.WEBPAY_PLUS, 
+        IntegrationApiKeys.WEBPAY, 
+        IntegrationType.TEST))
+    
+    response = transaction.create(buy_order, session_id, amount, return_url)
+    token = response['token']
+    url = response['url']
+    
+    return render(request, 'core/pago_invitado.html', {'url': url, 'token': token})
 
 
 def retorno_pago(request):
@@ -257,15 +316,7 @@ def retorno_pago(request):
 
 
 def productos(request):
-    url = 'http://localhost:8000/api/v1/productos'
-    
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        datos = response.json()
-    except requests.exceptions.RequestException as e:
-        print(f"Error al hacer la solicitud a la API: {e}")
-        datos = None
+    datos = producto.objects.all()
     
     context = {
         'productos': datos
@@ -327,12 +378,103 @@ def edicion_producto(request, pk):
         return redirect("crud_productos")
 
 
-def IndexEmpleados(request):
-    return render(request, "core/IndexEmpleados.html")
+def administrador(request):
+    return render(request, "core/administrador.html")
+
+
+def vendedor(request):
+    ped = pedido.objects.filter(estadoPedido=1)
+    pedInvitado = pedidoSinRegistrar.objects.filter(estadoPedido=1)
+    context = {
+        "pedidos" : ped,
+        "pedidos_invitados": pedInvitado,
+    }
+    return render(request, "core/vendedor.html", context)
+
+
+def bodeguero(request):
+    ped = pedido.objects.filter(Q(estadoPedido=2) | Q(estadoPedido=4) | Q(estadoPedido=5))
+    pedInvitado = pedidoSinRegistrar.objects.filter(Q(estadoPedido=2) | Q(estadoPedido=4) | Q(estadoPedido=5))
+    context = {
+        "pedidos" : ped,
+        "pedidos_invitados": pedInvitado,
+    }
+    return render(request, "core/bodeguero.html", context)
+
+
+def cambiarEstadoPedido(request):
+    if request.method == "POST":
+        idPed = request.POST["idPedido"]
+        idEstado = request.POST["idEstado"]
+        redirect_url = request.POST.get("redirect_url")
+
+        objPedido = pedido.objects.get(idPedido=idPed)
+        objEstado = estadoPedido.objects.get(idEstadoPedido=idEstado)
+
+        objPedido.estadoPedido = objEstado
+        objPedido.save()
+        return redirect(redirect_url)
+
+
+def cambiarEstadoPedidoInvitado(request):
+    if request.method == "POST":
+        idPed = request.POST["idPedido"]
+        idEstado = request.POST["idEstado"]
+        redirect_url = request.POST.get("redirect_url")
+
+        objPedido = pedidoSinRegistrar.objects.get(idPedido=idPed)
+        objEstado = estadoPedido.objects.get(idEstadoPedido=idEstado)
+
+        objPedido.estadoPedido = objEstado
+        objPedido.save()
+        return redirect(redirect_url)
+
+
+def contador(request):
+    ped = pedido.objects.all()
+    ped_invitado = pedidoSinRegistrar.objects.all()
+    context = {
+        "pedidos" : ped,
+        "pedidos_invitados" : ped_invitado,
+    }
+    return render(request, "core/contador.html", context)
+
+
+def cambiarEstadoPago(request):
+    if request.method == "POST":
+        idPed = request.POST["idPedido"]
+        idEstado = request.POST["idEstado"]
+        redirect_url = request.POST.get("redirect_url")
+
+        objPedido = pedido.objects.get(idPedido=idPed)
+        objEstado = estadoPago.objects.get(idEstadoPago=idEstado)
+
+        objPedido.estadoPago = objEstado
+        objPedido.save()
+        return redirect(redirect_url)
+
+
+def cambiarEstadoPagoInvitado(request):
+    if request.method == "POST":
+        idPed = request.POST["idPedido"]
+        idEstado = request.POST["idEstado"]
+        redirect_url = request.POST.get("redirect_url")
+
+        objPedido = pedidoSinRegistrar.objects.get(idPedido=idPed)
+        objEstado = estadoPago.objects.get(idEstadoPago=idEstado)
+
+        objPedido.estadoPago = objEstado
+        objPedido.save()
+        return redirect(redirect_url)
 
 
 def Logout(request):
-    del request.session["nombreUsuario"]
+    del request.session["runCliente"]
+    return redirect("index")
+
+
+def logout_empleado(request):
+    del request.session["runEmpleado"]
     return redirect("index")
 
 

@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Interfaz Para empleados</a>
+                <a class="navbar-brand" href="#">Interfaz administrador</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -28,7 +28,7 @@
                             <a class="nav-link" href="#">Settings</a>
                         </li>
                     </ul>
-                    <button class="logout-btn ms-3" onclick="logout()">Logout</button>
+                    <a href="{% url 'logout_empleado' %}" class="btn btn-danger"><Button>Cerrar sesion</Button></a>
                 </div>
             </div>
         </nav>
@@ -59,20 +59,6 @@
                             <i class="fas fa-user-cog fa-3x">
                                 <div class="card-body">
                                     <p>Gestiona los productos</p>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            Ver Órdenes de Pedido
-                        </div>
-                        <a style="text-decoration:none;" href="">
-                            <i class="fas fa-user-cog fa-3x">
-                                <div class="card-body">
-                                    <p>Gestiona las ordenes de pedido</p>
                                 </div>
                             </i>
                         </a>

@@ -34,8 +34,8 @@
                     <label for="cargo" class="form-label">Cargo</label>
                     <select name="cargo" class="form-control" id="cargo" required>
                       <option value="" selected disabled>Seleccione cargo</option>
-                      {% for ca in Cargo %}
-                        <option value="{{ ca.idCargo }}">{{ ca.nombreCargo }}</option>
+                      {% for t in tipo %}
+                        <option value="{{ t.idTipoUsuario }}">{{ t.nombreTipoUsuario }}</option>
                       {% endfor %}
                     </select>
                     <br>
