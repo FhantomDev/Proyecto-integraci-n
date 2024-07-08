@@ -161,10 +161,26 @@ def login_empleados(request):
                     )
         except empleado.DoesNotExist:
             emp = None
-        if emp is not None:
+        if emp.tipoUsuario.idTipoUsuario == 2:
             request.session["nombreEmpleado"] = emp.nombreCompleto
             request.session["runEmpleado"] = emp.runEmpleado
-            return render(request, "core/index.html")
+            request.session["tipoUsuario"] = emp.tipoUsuario.idTipoUsuario
+            return render(request, "core/administrador.html")
+        elif emp.tipoUsuario.idTipoUsuario == 3:
+            request.session["nombreEmpleado"] = emp.nombreCompleto
+            request.session["runEmpleado"] = emp.runEmpleado
+            request.session["tipoUsuario"] = emp.tipoUsuario.idTipoUsuario
+            return render(request, "core/vendedor.html")
+        elif emp.tipoUsuario.idTipoUsuario == 4:
+            request.session["nombreEmpleado"] = emp.nombreCompleto
+            request.session["runEmpleado"] = emp.runEmpleado
+            request.session["tipoUsuario"] = emp.tipoUsuario.idTipoUsuario
+            return render(request, "core/bodeguero.html")
+        elif emp.tipoUsuario.idTipoUsuario == 5:
+            request.session["nombreEmpleado"] = emp.nombreCompleto
+            request.session["runEmpleado"] = emp.runEmpleado
+            request.session["tipoUsuario"] = emp.tipoUsuario.idTipoUsuario
+            return render(request, "core/contador.html")
         
     return render(
         request,
@@ -379,27 +395,39 @@ def edicion_producto(request, pk):
 
 
 def administrador(request):
-    return render(request, "core/administrador.html")
+    tipo = request.session.get("tipoUsuario")
+    if tipo != 2 or tipo is None:
+        return render(request, "core/index.html")
+    else:
+        return render(request, "core/administrador.html")
 
 
 def vendedor(request):
-    ped = pedido.objects.filter(estadoPedido=1)
-    pedInvitado = pedidoSinRegistrar.objects.filter(estadoPedido=1)
-    context = {
-        "pedidos" : ped,
-        "pedidos_invitados": pedInvitado,
-    }
-    return render(request, "core/vendedor.html", context)
+    tipo = request.session.get("tipoUsuario")
+    if tipo != 3 or tipo is None:
+        return render(request, "core/index.html")
+    else:
+        ped = pedido.objects.filter(estadoPedido=1)
+        pedInvitado = pedidoSinRegistrar.objects.filter(estadoPedido=1)
+        context = {
+            "pedidos" : ped,
+            "pedidos_invitados": pedInvitado,
+        }
+        return render(request, "core/vendedor.html", context)
 
 
 def bodeguero(request):
-    ped = pedido.objects.filter(Q(estadoPedido=2) | Q(estadoPedido=4) | Q(estadoPedido=5))
-    pedInvitado = pedidoSinRegistrar.objects.filter(Q(estadoPedido=2) | Q(estadoPedido=4) | Q(estadoPedido=5))
-    context = {
-        "pedidos" : ped,
-        "pedidos_invitados": pedInvitado,
-    }
-    return render(request, "core/bodeguero.html", context)
+    tipo = request.session.get("tipoUsuario")
+    if tipo != 4 or tipo is None:
+        return render(request, "core/index.html")
+    else:
+        ped = pedido.objects.filter(Q(estadoPedido=2) | Q(estadoPedido=4) | Q(estadoPedido=5))
+        pedInvitado = pedidoSinRegistrar.objects.filter(Q(estadoPedido=2) | Q(estadoPedido=4) | Q(estadoPedido=5))
+        context = {
+            "pedidos" : ped,
+            "pedidos_invitados": pedInvitado,
+        }
+        return render(request, "core/bodeguero.html", context)
 
 
 def cambiarEstadoPedido(request):
@@ -431,13 +459,17 @@ def cambiarEstadoPedidoInvitado(request):
 
 
 def contador(request):
-    ped = pedido.objects.all()
-    ped_invitado = pedidoSinRegistrar.objects.all()
-    context = {
-        "pedidos" : ped,
-        "pedidos_invitados" : ped_invitado,
-    }
-    return render(request, "core/contador.html", context)
+    tipo = request.session.get("tipoUsuario")
+    if tipo != 5 or tipo is None:
+        return render(request, "core/index.html")
+    else:
+        ped = pedido.objects.all()
+        ped_invitado = pedidoSinRegistrar.objects.all()
+        context = {
+            "pedidos" : ped,
+            "pedidos_invitados" : ped_invitado,
+        }
+        return render(request, "core/contador.html", context)
 
 
 def cambiarEstadoPago(request):
@@ -470,11 +502,13 @@ def cambiarEstadoPagoInvitado(request):
 
 def Logout(request):
     del request.session["runCliente"]
+    del request.session["nombreCliente"]
     return redirect("index")
 
 
 def logout_empleado(request):
     del request.session["runEmpleado"]
+    del request.session["nombreEmpleado"]
     return redirect("index")
 
 
