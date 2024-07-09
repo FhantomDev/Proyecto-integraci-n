@@ -40,6 +40,7 @@
                       <th>Cliente</th>
                       <th>Run</th>
                       <th>Estado pedido</th>
+                      <th>Opciones</th>
                       <th>Acción</th>
                     </thead>
                     <tbody>
@@ -58,6 +59,13 @@
                               <td>{{ped.cliente.runCliente}}</td>
                               <td>{{ped.estadoPedido.nombreEstadoPedido}}</td>
                               <input type="hidden" name="redirect_url" value="{% url 'vendedor' %}">
+                              <td>
+                                <select name="idEstado" class="form-control" id="idEstado" required>
+                                <option value="" selected disabled>Seleccione...</option>
+                                <option value="1">Sin estado</option>
+                                <option value="2">Aceptar</option>
+                                <option value="3">Rechazar</option>
+                              </select>
                               <td><button type="submit" class="btn btn-primary" id="btnSolicitud">Aceptar</button></td>
                           </form>
                         </tr>
@@ -77,6 +85,7 @@
                       <th>Cliente</th>
                       <th>Run</th>
                       <th>Estado pedido</th>
+                      <th>Opciones</th>
                       <th>Acción</th>
                     </thead>
                     <tbody>
@@ -95,6 +104,13 @@
                               <td>{{pedInvitado.runCliente}}</td>
                               <td>{{pedInvitado.estadoPedido.nombreEstadoPedido}}</td>
                               <input type="hidden" name="redirect_url" value="{% url 'vendedor' %}">
+                              <td>
+                                <select name="idEstado" class="form-control" id="idEstado" required>
+                                <option value="" selected disabled>Seleccione...</option>
+                                <option value="1">Sin estado</option>
+                                <option value="2">Aceptar</option>
+                                <option value="3">Rechazar</option>
+                              </select>
                               <td><button type="submit" class="btn btn-primary" id="btnSolicitud">Aceptar</button></td>
                           </form>
                         </tr>

@@ -29,7 +29,12 @@ from .views import (
     cambiarEstadoPagoInvitado,
     login_empleados,
     logout_empleado,
-    vendedor
+    vendedor,
+    boletas,
+    detalle_invitado,
+    detalle_registrado,
+    boletas_registrados,
+    boletas_invitados
 )
 
 router = routers.DefaultRouter()
@@ -52,6 +57,8 @@ urlpatterns = [
     path("registro", registro, name="registro"),
     path("edicion_producto/<str:pk>", edicion_producto, name="edicion_producto"),
     path("eliminarProducto/<str:pk>", eliminarProducto, name="eliminarProducto"),
+    path("detalle_registrado/<str:pk>", detalle_registrado, name="detalle_registrado"),
+    path("detalle_invitado/<str:pk>", detalle_invitado, name="detalle_invitado"),
     path("administrador", administrador, name="administrador"),
     path("Logout", Logout, name="Logout"),
     path("EliminarCuenta/<str:pk>", EliminarCuenta, name="EliminarCuenta"),
@@ -64,5 +71,8 @@ urlpatterns = [
     path("cambiarEstadoPagoInvitado", cambiarEstadoPagoInvitado, name="cambiarEstadoPagoInvitado"),
     path("login_empleados", login_empleados, name="login_empleados"),
     path("logout_empleado", logout_empleado, name="logout_empleado"),
+    path("boletas", boletas, name="boletas"),
+    path("boletas_invitados", boletas_invitados, name="boletas_invitados"),
+    path("boletas_registrados", boletas_registrados, name="boletas_registrados"),
     path('', include(router.urls)),
 ]
